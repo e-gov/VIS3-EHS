@@ -167,7 +167,7 @@ Kirje koosneb väljadest, mille sisu on järgmine:
     identifitseerimiseks kasutatakse kohaliku omavalitsuse EHAK-koodi, Tallinna
     korral linnaosa EHAK-koodi, alaliselt välisriigis elava valija korral
     kasutatakse väärtust `FOREIGN`.
-5.  `electoral_district_id` - valimisringkonna number identifitseerib
+5.  `electoral_district_nr` - valimisringkonna number identifitseerib
     valimisringkonna, kus valija hääletab. KOV valimiste korral kehtib
     identifikaator haldusüksuse sees. RK, EP ja RH valimiste korral on
     identifikaator haldusüksuste ülene.
@@ -190,10 +190,10 @@ person_code = 11DIGIT
 voter_name = 1*100UTF-8-CHAR
 action = "lisamine" | "kustutamine"
 kov_code = 4DIGIT | "FOREIGN"
-electoral_district_id = 1*10DIGIT
+electoral_district_nr = 1*10DIGIT
 
 # Kirje definitsioon
-voter = person_code TAB voter_name TAB action TAB kov_code TAB electoral_district_id LF
+voter = person_code TAB voter_name TAB action TAB kov_code TAB electoral_district_nr LF
 
 # Nimekirja definitsioon
 voter_list = version LF election_identifier LF changeset LF period LF *voter
@@ -215,7 +215,7 @@ Nimekirju töötlev rakendus lähtub järgmistest reeglitest:
         rakenduse andmebaasis olla.
     3.  Kui tegevus on `eemaldamine`, siis peab vastava isikukoodiga kirje
         rakenduse andmebaasis olema ning tema `kov_code` ja
-        `electoral_district_id` väljade väärtused peavad juba registreeritutega
+        `electoral_district_nr` väljade väärtused peavad juba registreeritutega
         ühtima.
 
 Kui valijaga soetud andmeid on vaja muuta, näiteks valija liigub ühest
