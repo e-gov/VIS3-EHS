@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: VIS3 EHS API spetsifikatsioon
-  description: VIS3 pakub e-hääletamise süsteemile (EHS) API-d, millega EHS saab VIS3-st laadida valijate nimekirja muudatusi ja VIS3-e saata e-hääletanute koguarvu teatist. Spetsifikatsioon on avalik (avaldatakse GitHub-is, repos https://github.com/e-gov/VIS3-EHS. 
+  description: VIS3 pakub e-hääletamise süsteemile (EHS) API-d, millega EHS saab VIS3-st laadida valijate nimekirja muudatusi ja VIS3-e saata e-hääletanute koguarvu teatist. Spetsifikatsioon on avalik (avaldatakse GitHub-is, repos https://github.com/e-gov/VIS3-EHS.
   termsOfService: http://swagger.io/terms/
   license:
     name: MIT
@@ -47,7 +47,7 @@ paths:
           schema:
             type: string
           example: RH_2021
-        - name: changeSet
+        - name: changeset
           in: query
           description: Valijate muudatusnimekirja järjenumber (1, 2, 3, ...)
           required: true
@@ -151,9 +151,9 @@ components:
           type: integer
 
         url:
-          description: Ressursi asuokoht aadressina samal serveril
+          description: Ressursi asukoht aadressina samal serveril
           type: string
-          example: /avpi/v1/ehs-election-voters-changeset?electionCode=RH_2021&changeSet=1
+          example: /api/v1/ehs-election-voters-changeset?electionCode=RH_2021&changeset=1
 
         from:
           description: Muudatusnimekirja ajavahemiku alguse aeg
@@ -172,7 +172,7 @@ components:
         field:
           type: string
           description: Vea põhjustanud andmeväli
-          example: "batchNumber"
+          example: "changeset"
         value:
           type: object
           description: Vea põhjustanud andmevälja väärtus
