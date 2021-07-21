@@ -9,6 +9,8 @@ algnimekirja ja valijate nimekirja muudatusi ehk muudatusnimekirju.
 Spetsifikatsioon on avalik. Spetsifikatsioon ei käsitle VIS3 ega EHS
 konfidentsiaalset siseehitust ega liidese konfidentsiaalseid elemente.
 
+Käesolevat spetsifikatsiooni tuleb kasutada koos VIS3 EHS API OpenAPI spetsifikatsiooniga (asub käesolevas repos, failis `vis-ehs-api.yaml`).
+
 ## 2. Sõnumivahetus nimekirjade edastamiseks
 
 Valijate nimekirja põhjal tuvastab EHS, isiku hääleõiguse ja
@@ -330,19 +332,17 @@ Näide antud meetodi kasutamiseks golang keeles on leitav repositooriumis
 
 ## 5. Transpordiprotokoll
 
-VIS3-EHS masinliides koosneb kahest API otspunktist.
+VIS3-EHS käesolev masinliides koosneb kahest API otspunktist.
 
-1.  API otspunkt `api-election-get-voters-changeset` muudatusnimekirjade
-    laadimiseks
-2.  API otspunkt `api-election-list-changesets` ülevaate saamiseks avalikustatud
+1.  API otspunkt `ehs-voters-changeset` konkreetse muudatusnimekirja
+    laadimiseks VIS3-st
+2.  API otspunkt `ehs-list-election-changesets` ülevaate saamiseks avalikustatud
     nimekirjadest
-
-Otspunktide nimed on hetkel fiktiivsed.
 
 Transpordiprotokoll on HTTPS, kuna volitamata ligipääs nimekirjadele tuleb
 tõkestada kasutatakse mõlemapoolselt autenditud TLS ühendusi.
 
-### 5.1 `api-election-get-voters-changeset`
+### 5.1 `ehs-voters-changeset`
 
 HTTP meetod on GET. Päringu tegemisel tuleb kasutada kohustuslikke parameetreid
 `changeset` ja `election_identifier`, kus
@@ -365,7 +365,7 @@ Sellise vastuse korral on HTTP status 200.
 Juhul kui vastava järjekorranumbriga muudatusnimekirja veel ei eksisteeri
 antakse vastuses HTTP status 404.
 
-### 5.1 `api-election-list-changesets`
+### 5.1 `ehs-list-election-changesets`
 
 HTTP meetod on GET. Päringu tegemisel tuleb kasutada kohustuslikku parameetrit
 `election_identifier`:
@@ -375,6 +375,8 @@ HTTP meetod on GET. Päringu tegemisel tuleb kasutada kohustuslikku parameetrit
 Kui EHS teeb API otspunkti, siis juhul kui vastava identifikaatoriga valimine
 eksisteerib, vastab VIS3 `application/json` tüüpi baidijadaga, mis sisaldab
 endas JSON vormingus viiteid kõigile väljastatud muudatusnimekirjadele.
+
+MÄRKUS. Viidetes tarnitavad URL-id ei ole õiged ja seetõttu mittekasutatavad. EHS peab konkreetse muudatuste nimekirja poole pöördumise URL-i koostama vastavalt VIS3 EHS API OpenAPI vormingus spetsifikatsioonile (asub käesolevas repos, failis `vis3-ehs-api.yaml`). VIS3 edasisestes versioonides eemaldame viidetest URL-id. 20.07.2021.
 
 ``` {.sourceCode .html}
 {
