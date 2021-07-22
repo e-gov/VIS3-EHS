@@ -378,24 +378,26 @@ endas JSON vormingus viiteid kõigile väljastatud muudatusnimekirjadele.
 
 MÄRKUS. Viidetes tarnitavad URL-id ei ole õiged ja seetõttu mittekasutatavad. EHS peab konkreetse muudatuste nimekirja poole pöördumise URL-i koostama vastavalt VIS3 EHS API OpenAPI vormingus spetsifikatsioonile (asub käesolevas repos, failis `vis3-ehs-api.yaml`). VIS3 edasisestes versioonides eemaldame viidetest URL-id. 20.07.2021.
 
+MÄRKUS. Viidetes tarnitavate URL-de käsitlust muudetud: elemendis `url` tarnitakse mitte täis-URL, vaid ainult _path_ ja -query_ osa. 
+
 ``` {.sourceCode .html}
 {
   changesets: [
     {
       "changeset": 0,
-      "url": "https://vis3.node/api-election-get-voters-changeset/?changeset=0&election_identifier=RK2051",
+      "url": "/ehs-election-voters-changeset/?changeset=0&election_identifier=RK2051",
       "from": "2021-01-11T02:00:00Z",
       "to": "2021-01-12T02:00:00Z"
     },
     {
       "changeset": 1,
-      "url": "https: //vis3.node/api-election-get-voters-changeset/?changeset=1&election_identifier=RK2051",
+      "url": "/ehs-election-voters-changeset/?changeset=1&election_identifier=RK2051",
       "from": "2021-01-12T02:00:00Z",
       "to": "2021-01-13T02:00:00Z"
     },
     {
       "changeset": 2,
-      "url": "https: //vis3.node/api-election-get-voters-changeset/?changeset=2&election_identifier=RK2051",
+      "url": "/ehs-election-voters-changeset/?changeset=2&election_identifier=RK2051",
       "from": "2021-01-13T02:00:00Z",
       "to": "2021-01-14T02:00:00Z"
     }
