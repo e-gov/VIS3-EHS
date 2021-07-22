@@ -151,9 +151,9 @@ components:
           type: integer
 
         url:
-          description: Ressursi asukoht aadressina samal serveril
+          description: Ressursi asukoht URL-i tee ja päringu osadena (path and query parts of the URL) samal serveril
           type: string
-          example: /api/v1/ehs-election-voters-changeset?electionCode=RH_2021&changeset=1
+          example: /ehs-election-voters-changeset?electionCode=RH_2021&changeset=1
 
         from:
           description: Muudatusnimekirja ajavahemiku alguse aeg
