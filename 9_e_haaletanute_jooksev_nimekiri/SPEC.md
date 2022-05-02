@@ -1,16 +1,17 @@
 # E-hääletanute jooksev nimekiri
 
-kavand, v0.2
+kavand v0.2
 
-# Muutelugu
+## Muutelugu
 
-- "EHS- VIS3 liidestus" (kavand) - Indrek Leesi, apr 2022
-- arutelu: X-tee kasutamine, JSON - Tarmo Hanga, Priit Parmakson
+
 - "E-hääletanute jooksev nimekiri", kavand v0.2 - Priit Parmakson, 02.05.2022
+- arutelu: X-tee kasutamine, JSON - Tarmo Hanga, Priit Parmakson, apr 2022
+- "EHS- VIS3 liidestus" (kavand) - Indrek Leesi, apr 2022
 
 ## Ülevaade
 
-Käesolev spetsifikatsioon määratleb protokolli e-hääletanute nimekirja jooksvaks edastamiseks e-hääletamise süsteemist (EHS) Valimiste infosüsteemi (VIS3).
+Käesolev spetsifikatsioon määratleb protokolli e-hääletanute nimekirja jooksvaks edastamiseks e-hääletamise süsteemist (edaspidi - EHS) Valimiste infosüsteemi (edaspidi - VIS3).
 
 Peale hääletamise lõppu, valimispäeval edastatakse EHS-st VIS3-le e-hääletanute nimekiri (edaspidi - e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md). See funktsionaalsus jääb toimima - seda ei saa välja jätta, sest töötlemise viimasel etapil võivad selguda rikutud sedelid või kehtetud hääled.
 
@@ -22,21 +23,25 @@ Teenust pakub EHS. VIS3 pöördub regulaarselt teenuse poole. EHS edastab e-hä�
 
 Sünkroonimiseks kasutatakse e-hääletanute nummerdamist.
 
+## Kaalutlused
+
 Teenus on arendatud X-tee REST võimalusi kasutades, vastavalt X-tee REST sõnumiprotokollile ([X-Road: Message Protocol for REST](https://www.x-tee.ee/docs/live/xroad/pr-rest_x-road_message_protocol_for_rest.html)). Andmed väljastatakse JSON-vormingus.
 
 X-teed on otstarbekas kasutada, sest kuigi VIS3 ja EHS võivad olla käitatud samas taristus, on ikkagi vaja tagada usaldus, logimine ja paindlikkus - omadused, mille tagamine X-tee kasutamisega kokkuvõttes tõenäoliselt ei saaks olema lihtsam ega odavam.
 
-Kavandis on arvesse võetud Rahvastikuregistri ja VIS3 vaheliste X-tee teenuste kogemusi (REST sõnumiprotokoll, JSON, OpenAPI).
+Protokollis on arvesse võetud Rahvastikuregistri ja VIS3 vaheliste X-tee teenuste kasutamise kogemust (REST sõnumiprotokoll, JSON, OpenAPI).
 
 Erilist tähelepanu on pööratud andmete re-sünkroonimise võimalusele tõrgete korral. Selleks on pakkide pärimine kavandatud idenmpotentsena.
 
-# Alternatiivsed sünkroonimisprotokollid
+E-hääletanute nimekirja "peegeldamiseks" EHS-st VIS3-e võiks põhimõtteliselt kasutada ka mõnda standardset sünkroonimisprotokolli (nt Git, Rsync vms, vt \[1], \[2], \[3]). Kuna vajadus on suhteliselt lihtne, siis seda ei ole tehtud. 
 
-E-hääletanute nimekirja "peegeldamiseks" EHS-st VIS3-e võiks põhimõtteliselt kasutada ka mõnda standardset sünkroonimisprotokolli. 
+## E-hääletanute järjenumbrid
 
-# E-hääletanute järjenumbrid
+Tagamaks, et e-hääletanute nimekiri kantakse EHS-st VIS3-e õigeaegselt ja täielikult, kasutatakse järjenumbreid. EHS omistab igale e-hääletanule järjenumbri (Sequence Number).
 
-Tagamaks, et e-hääletanute nimekiri kantakse EHS-st VIS3-e õigeaegselt ja täielikult, kasutatakse järjenumbreid. EHS omistab igale e-hääletanule järjenumbri (Sequence Number). Järjenumber on naturaalarv, alates ühest. Igas valimissündmuses on oma numeratsioon.
+Järjenumber on naturaalarv, alates ühest. Väärtus `0` tähistab olukorda, kus e-hääletanuid veel ei ole.
+
+Igas valimissündmuses on oma numeratsioon.
 
 ## Teenus
 
@@ -44,7 +49,7 @@ Teenuse vastutav töötleja on Riigi Valimisteenistus. Teenust osutav süsteem o
 
 Teenust kasutav süsteem on VIS3. Teenust kasutava süsteemi vastutav töötleja on Riigi Infosüsteemi Amet.
 
-Teenuse ärinimi on "E-hääletanute jooksev nimekiri". Teenuse tehniline nimi on (X-tee REST teenusekood (Service Code)) `e-voters-running-list`.
+Teenuse ärinimi on "E-hääletanute jooksev nimekiri". Teenuse tehniline nimi (X-tee REST teenusekood, Service Code) on `e-voters-running-list`.
 
 Teenus pakub järgmisi otspunkte:
 
@@ -52,11 +57,11 @@ Teenus pakub järgmisi otspunkte:
 
 2  `GET /elections/{electionId}/lastseqno`. "Valimissündmuse viimane järjenumber" väljastab konkreetse valimissündmuse viimase EHS-s registreeritud e-hääletanu järjenumbri.
 
-3  `GET /elections/{electionId}/evotersbatchfrom/{fromseqno}`. "e-hääletanute pakk". Selle päringuga pärib VIS3 EHS-lt valimissündmuse `{electionId}` e-hääletanute andmepaki, alatest e-hääletanust järjenumbriga `{electionId}`.
+3  `GET /elections/{electionId}/evotersbatchfrom/{fromseqno}`. "e-hääletanute pakk". Selle päringuga pärib VIS3 EHS-lt valimissündmuse `{electionId}` e-hääletanute paki, alatest e-hääletanust järjenumbriga `{fromseqno}`.
 
-Päringute ja vastuste andmestruktuuride ja samuti vastuskoodide spetsifikatsiooni vt OpenAPI spetsifikatsioonis: [ehs-xroad-api.yaml](../ehs-xroad-api.yaml). 
+Päringute ja vastuste andmestruktuuride ja samuti vastuskoodide spetsifikatsiooni vt OpenAPI spetsifikatsioonis: [ehs-xroad-api.yaml](ehs-xroad-api.yaml). 
 
-# Otspunkt "Valimissündmuste loetelu"
+## Otspunkt "Valimissündmuste loetelu"
 
 Näide.
 
@@ -76,7 +81,7 @@ EHS vastab, et aktiivseid valimissündmusi on üks - `RK_2023`.
 
 Kui aktiivseid valimissündmusi ei ole, siis EHS peab vastuses saatma tühja massiivi (JSON Array).
 
-# Otspunkt "Valimissündmuse viimane järjenumber"
+## Otspunkt "Valimissündmuse viimane järjenumber"
 
 Näide.
 
@@ -99,7 +104,7 @@ Kui valimissündmus on EHS-le tundmatu, siis EHS vastab HTTP vastuskoodiga `404 
 
 Järjenumbrid algavad ühest (`1`). Kui valimisündmuses ei ole veel ükski valija e-hääletanud, siis vastab EHS `lastseqno` väärtusega `0`.
 
-# Otspunkt "e-hääletanute pakk"
+## Otspunkt "e-hääletanute pakk"
 
 Näide 3.
 
