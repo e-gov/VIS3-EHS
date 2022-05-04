@@ -151,11 +151,19 @@ components:
             batchrecords:
               type: array
                 items:
-                  $ref: "#/components/schemas/EVoter"
+                  $ref: "#/components/schemas/EVotingFact"
 
-    EVoter:
+    EVotingFact:
       type: object
       properties:
+        seqno:
+          type: number
+          description: E-hääletanu järjenumber (konkreetses valimissündmuses)
+          example: 54001
+        evotingdatetime:
+          type: string
+          description: E-hääletamise aeg, RFC 3339 vormingus, s.t kas UTC ajavööndis, s.t kujul "YYYY-MM-DDThh:mm:ssZ" või ajavööndinihke näitamisega ""YYYY-MM-DDThh:mm:ss+hh:mm"
+          example: "2022-04-28T12:15:20+03:00"
         idcode:
           type: string
           description: Isikukood
@@ -164,10 +172,6 @@ components:
           type: string
           description: E-hääletanu nimi (nii ees- kui perekonnanimi), teabeliseks otstarbeks.
           example: "LEO KASS"
-        seqno:
-          type: number
-          description: E-hääletanu järjenumber (konkreetses valimissündmuses)
-          example: 54001
         kovcode:
           type: string
           description: KOV EHAK kood

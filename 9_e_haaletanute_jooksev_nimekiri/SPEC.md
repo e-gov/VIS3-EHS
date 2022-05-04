@@ -1,10 +1,11 @@
 # E-hääletanute jooksev nimekiri
 
-kavand v0.2
+kavand v0.3
 
 ## Muutelugu
 
-
+- lisatud: 1) ärivajaduse täpsustus; 2) e-hääletamise fakti aja edastamine; 3) edastuse kontroll ja vajadusel täiendamine või parandamine lõpliku faili abil - Priit Parmakson, 04.05.2022 
+- arutelu - RVT ja RIA inimesed, 04.05.2022
 - "E-hääletanute jooksev nimekiri", kavand v0.2 - Priit Parmakson, 02.05.2022
 - arutelu: X-tee kasutamine, JSON - Tarmo Hanga, Priit Parmakson, apr 2022
 - "EHS- VIS3 liidestus" (kavand) - Indrek Leesi, apr 2022
@@ -13,9 +14,9 @@ kavand v0.2
 
 Käesolev spetsifikatsioon määratleb protokolli e-hääletanute nimekirja jooksvaks edastamiseks e-hääletamise süsteemist (edaspidi - EHS) Valimiste infosüsteemi (edaspidi - VIS3).
 
-Peale hääletamise lõppu, valimispäeval edastatakse EHS-st VIS3-le e-hääletanute nimekiri (edaspidi - e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md). See funktsionaalsus jääb toimima - seda ei saa välja jätta, sest töötlemise viimasel etapil võivad selguda rikutud sedelid või kehtetud hääled.
+Varasematel valimistel (k.a KOV 2021) on peale hääletamise lõppu, valimispäeval edastatud EHS-st VIS3-le e-hääletanute nimekiri (edaspidi - e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md).
 
-Siiski on vajadus VIS3-s saada teavet, kas valija on e-hääletanud, juba enne ülalnimetatud lõplikku edastust.
+Siiski on vajadus VIS3-s saada teavet, kas valija on e-hääletanud, juba enne ülalnimetatud lõplikku edastust. Valija, kes on e-hääletanud, võib tulla eelhääletamise perioodil valimisjaoskonda ja soovida paberil hääletada. Valimisjaoskonna töötajal oleks hea omada võimalust VIS3-st vaadata, kas valija on e-hääletanud. Seda teavet saab muuhulgas kasutada valija hoiatamiseks, et paberhääletamisega e-hääletamine tühistub. 
 
 E-hääletanute jooksev nimekiri edastatakse EHS-st VIS3-e X-tee teenusega.
 
@@ -121,16 +122,18 @@ Vastus:
   "batchmaxsize": 100,
   "evotersbatch": [
     { 
+      "seqno": 54001,
+      "evotingdatetime": "2022-04-28T12:15:20+03:00",
       "idcode": "38101010020",
       "votername": "LEO KASS",
-      "seqno": 54001,
       "kovcode": "0068",
       "electoraldistrictid": 4
     },
     { 
+      "seqno": 54002,
+      "evotingdatetime": "2022-04-28T12:16:52+03:00",
       "idcode": "38101010021",
       "votername": "MARK KOER",
-      "seqno": 54002,
       "kovcode": "0305",
       "electoraldistrictid": 4
     }
@@ -140,6 +143,8 @@ Vastus:
 ```
 
 EHS vastab, et saadab valimissündmuse `RK_2023` e-hääletanute andmeid, alates järjenumbrist `54001`, pakina, milles on kuni `100` kirjet. Konkreetses pakis on kaks kirjet, kuna paki moodustamise hetkel on viimase EHS-s registreeritud e-hääletaja järjenumber `54002`. Esimene kirje tähendab, et valija `LEO KASS`, isikukoodiga `38101010020` on valimistel `RK_2023` e-hääletanud. Kirjes on ka valija KOV EHAK-kood ja valimisringkonna number.
+
+Iga e-hääletamise fakti kohta saadab EHS ka e-hääletamise aja. Aeg peab olema RFC 3339 vormingus, s.t kas UTC ajavööndis, s.t kujul "YYYY-MM-DDThh:mm:ssZ" või ajavööndinihke näitamisega ""YYYY-MM-DDThh:mm:ss+hh:mm".
 
 Paki maksimaalsuuruse `batchmaxsize` määrab EHS, arvestusega, et andmed saadetakse X-tee vastussõnumi kehas (mitte manuses). Vastussõnumi töötlemisel turvaserveris loetakse keha üehaegselt põhimällu. Seetõttu ei tohi vastusõnumi keha suurus ületada 10 MB (turvaserveri vaikeseadistus).
 
@@ -159,11 +164,21 @@ Päringute "e-hääletanute pakk" töötlusloogika EHS-i poolel peab võimaldama
 
 Töötlus peab olema idempotentne (samajõuline) - selles mõttes, et VIS3 võib päritud andmeid igal ajal uuesti küsida. Uuesti pärimisega ei tohi tekkida duubelandmeid, tähendusnihkeid ega kinnijooksmisi.
 
-# Veaolukordade käsitlemine
+Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relatsioonilises andmebaasis, vaid etcd mäluteenuses. 
+
+# Kontroll ja veaolukordade käsitlemine
 
 Eeldatakse, et EHS-i poolt VIS3-le väljastatav on korrektne ja muutumatu (e-hääletanute jooksva nimekirja piires). Parandus- ja muutmiskirjeid käesolev protokoll ei sisalda.
 
-Äärmise abinõuna, juhuks kui andmeid ühe või teise osapoole või andmevahetuskanali tõrgete tõttu peaksid sünkroonist välja minema, tuleb VIS3 poolel ette valmistada võimalus e-hääletanute nimekirja täies ulatuses uuestipärimiseks. Nimetatud võimalus on kasutamiseks eriolukorras, VIS3 operaatori poolt käsitsi initsieerimisega.
+Siiski on otstarbekas omada kontrollivõimalust. Ülalspetsifitseeritud andmevahetust kontrollitakse järgmiselt:
+
+Pärast e-hääletamise lõppu, valimispäeval, edastatakse EHS-st VIS3-le e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md).
+
+VIS3 operaator laeb e-hääletanute lõpliku nimekirja VIS3-e.
+
+VIS3 (moodul NIM) võrdleb reaalajalise liidese kaudu saadud andmeid lõplikus nimekirjas olevate andmetega. VIS3 koostab võrdluse kohta aruande. Võrdlusaruanne sisaldab leitud erinevusi või kinnitust, et reaalajalise liidese kaudu saadud andmed ühtivad lõpliku nimekirjaga. Erinevusteks võivad olla nii puuduvad kui ka üleliigsed andmed.
+
+Kui võrdlusaruanne sisaldab erinevusi, siis VIS3 operaator suhtleb EHS operaatoriga erinevuste põhjuste väljaselgitamiseks. VIS3 ja EHS operaatorite ühise otsuse alusel saab VIS3 operaator anda VIS3-le korralduse lõpliku nimekirja erinevused VIS3-e kanda. Selliste nn "parandus- või täienduskannete" juures algselt EHS-st saadud andmed jäävad VIS3 logidesse.
 
 # Kirjandus
 
