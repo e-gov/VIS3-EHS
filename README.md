@@ -29,6 +29,7 @@ Joonis 1. VIS3 ja EHS liidesed (ülevaade). Andmed liiguvad noole suunas. Masinl
 
 [8 E-hääletamisest osavõtu detailstatistika](8_e_haaletamise_detailstatistika/SPEC.md)
 
+[9 E-hääletamiste jooksev nimekiri](9_e_haaletamiste_jooksev_nimekiri)
 
 ## Usalduse loomine masinliidestes
 
