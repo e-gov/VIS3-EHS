@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: E-hääletanute jooksev nimekiri
+  title: E-hääletamiste jooksev nimekiri
   description: EHS poolt VIS3-le osutatava X-tee teenuse spetsifikatsioon
   license:
     name: MIT
@@ -30,8 +30,8 @@ paths:
 
   /elections/{electionid}/lastseqno:
     get:
-      summary: Valimissündmuses viimase e-hääletanu järjenumbri pärimine. 
-      description: Valimissündmuses viimase e-hääletanu järjenumbri pärimine.
+      summary: Valimissündmuses viimase e-hääletamise järjenumbri pärimine. 
+      description: Valimissündmuses viimase e-hääletamise järjenumbri pärimine.
       parameters:
         - name: electionid
           in: path
@@ -60,10 +60,10 @@ paths:
         500:
           description: "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
 
-  /elections/{electionid}/evotersbatchfrom/{fromseqno}:
+  /elections/{electionid}/evotingsbatchfrom/{fromseqno}:
     get:
-      summary: e-hääletanute pakk
-      description: VIS3 pärib EHS-le valimissündmuses e-hääletanute paki, alates järjenumbrist.
+      summary: e-hääletamiste pakk
+      description: VIS3 pärib EHS-le valimissündmuses e-hääletamiste paki, alates järjenumbrist.
       parameters:
         - name: electionid
           in: path
@@ -73,7 +73,7 @@ paths:
             type: string
         - name: fromseqno
           in: path
-          description: Viimase e-hääletanud järjenumber
+          description: Viimase e-hääletamise järjenumber
           required: true
           schema:
             type: number
@@ -83,11 +83,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/EVotersBatchResponse"
+                $ref: "#/components/schemas/EVotingsBatchResponse"
         400:
           description: Vigane päring
         404:
-          description: Päritud järjenumbriga e-hääletanut ei ole.
+          description: Päritud järjenumbriga e-hääletamist ei ole.
           content:
             application/json:
               schema:
@@ -127,10 +127,10 @@ components:
           example: "RK_2023"
         lastseqno:
           type: number
-          description: Viimase e-hääletanu järjenumber; või 0, kui e-hääletanuid veel ei ole.
+          description: Viimase e-hääletamise järjenumber; või 0, kui e-hääletamisi veel ei ole.
           example: 54001
 
-    EVotersBatchResponse:
+    EVotingsBatchResponse:
       type: object
       properties:
         electionname:
@@ -139,13 +139,13 @@ components:
           example: "RK_2023"
         fromseqno:
           type: number
-          description: E-hääletanu järjenumber, millest alates on pakis kirjed
+          description: E-hääletamise järjenumber, millest alates on pakis kirjed
           example: 54001
         batchmaxsize:
           type: number
           description: Maksimaalne kirjete arv pakis.
           example: 100
-        evotersbatch:
+        evotingsbatch:
           type: object
           properties:
             batchrecords:
@@ -158,12 +158,8 @@ components:
       properties:
         seqno:
           type: number
-          description: E-hääletanu järjenumber (konkreetses valimissündmuses)
+          description: E-hääletamise järjenumber (konkreetses valimissündmuses)
           example: 54001
-        evotingdatetime:
-          type: string
-          description: E-hääletamise aeg, RFC 3339 vormingus, s.t kas UTC ajavööndis, s.t kujul "YYYY-MM-DDThh:mm:ssZ" või ajavööndinihke näitamisega ""YYYY-MM-DDThh:mm:ss+hh:mm"
-          example: "2022-04-28T12:15:20+03:00"
         idcode:
           type: string
           description: Isikukood
