@@ -28,12 +28,12 @@ paths:
         500:
           description: Tehniline viga
 
-  /elections/{electionid}/lastseqno:
+  /elections/{electionId}/lastseqno:
     get:
       summary: Valimissündmuses viimase e-hääletamise järjenumbri pärimine. 
       description: Valimissündmuses viimase e-hääletamise järjenumbri pärimine.
       parameters:
-        - name: electionid
+        - name: electionId
           in: path
           description: Valimissündmuse ID
           required: true
@@ -60,18 +60,18 @@ paths:
         500:
           description: "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
 
-  /elections/{electionid}/evotingsbatchfrom/{fromseqno}:
+  /elections/{electionId}/evotingsbatchfrom/{fromSeqNo}:
     get:
       summary: e-hääletamiste pakk
       description: VIS3 pärib EHS-le valimissündmuses e-hääletamiste paki, alates järjenumbrist.
       parameters:
-        - name: electionid
+        - name: electionId
           in: path
           description: Valimissündmuse ID
           required: true
           schema:
             type: string
-        - name: fromseqno
+        - name: fromSeqNo
           in: path
           description: Viimase e-hääletamise järjenumber
           required: true
@@ -121,11 +121,11 @@ components:
     LastSeqNoResponse:
       type: object
       properties:
-        electionname:
+        electionName:
           type: string
           description: Valimissündmuse identifikaator
           example: "RK_2023"
-        lastseqno:
+        lastSeqNo:
           type: number
           description: Viimase e-hääletamise järjenumber; või 0, kui e-hääletamisi veel ei ole.
           example: 54001
@@ -133,22 +133,22 @@ components:
     EVotingsBatchResponse:
       type: object
       properties:
-        electionname:
+        electionName:
           type: string
           description: Valimissündmuse identifikaator
           example: "RK_2023"
-        fromseqno:
+        fromSeqNo:
           type: number
           description: E-hääletamise järjenumber, millest alates on pakis kirjed
           example: 54001
-        batchmaxsize:
+        batchMaxSize:
           type: number
           description: Maksimaalne kirjete arv pakis.
           example: 100
-        evotingsbatch:
+        eVotingsBatch:
           type: object
           properties:
-            batchrecords:
+            batchRecords:
               type: array
                 items:
                   $ref: "#/components/schemas/EVotingFact"
@@ -156,23 +156,23 @@ components:
     EVotingFact:
       type: object
       properties:
-        seqno:
+        seqNo:
           type: number
           description: E-hääletamise järjenumber (konkreetses valimissündmuses)
           example: 54001
-        idcode:
+        idCode:
           type: string
           description: Isikukood
           example: "38101010020"
-        votername:
+        voterName:
           type: string
           description: E-hääletanu nimi (nii ees- kui perekonnanimi), teabeliseks otstarbeks.
           example: "LEO KASS"
-        kovcode:
+        kovCode:
           type: string
           description: KOV EHAK kood
           example: "0068"
-        electoraldisctrictid:
+        electoralDistrictId:
           type: number
           description: Valimisringkonna number
           example: 4
