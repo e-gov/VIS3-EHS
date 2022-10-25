@@ -30,7 +30,7 @@ paths:
 
   /elections/{electionId}/lastseqno:
     get:
-      summary: Valimissündmuses viimase e-hääletamise järjenumbri pärimine. 
+      summary: Valimissündmuses viimase e-hääletamise järjenumbri pärimine.
       description: Valimissündmuses viimase e-hääletamise järjenumbri pärimine.
       parameters:
         - name: electionId
@@ -58,7 +58,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
         500:
-          description: "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
+          description: |
+            "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
 
   /elections/{electionId}/evotingsbatchfrom/{fromSeqNo}:
     get:
@@ -96,7 +97,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/GenericError"
         500:
-          description: "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
+          description: |
+            "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
 
 components:
   schemas:
@@ -150,8 +152,8 @@ components:
           properties:
             batchRecords:
               type: array
-                items:
-                  $ref: "#/components/schemas/EVotingFact"
+              items:
+                $ref: "#/components/schemas/EVotingFact"
 
     EVotingFact:
       type: object
