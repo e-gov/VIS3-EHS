@@ -128,14 +128,14 @@ Vastus:
       "idcode": "38101010020",
       "votername": "LEO KASS",
       "kovcode": "0068",
-      "electoraldistrictid": 4
+      "electoraldistrictno": 4
     },
     { 
       "seqno": 54002,
       "idcode": "38101010021",
       "votername": "MARK KOER",
       "kovcode": "0305",
-      "electoraldistrictid": 4
+      "electoraldistrictno": 4
     }
   ]
 

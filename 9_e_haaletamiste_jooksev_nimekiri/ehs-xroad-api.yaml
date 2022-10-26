@@ -174,7 +174,7 @@ components:
           type: string
           description: KOV EHAK kood
           example: "0068"
-        electoralDistrictId:
+        electoralDistrictNo:
           type: number
           description: Valimisringkonna number
           example: 4
