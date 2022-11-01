@@ -4,6 +4,7 @@ kavand v0.4
 
 ## Muutelugu
 
+- Lisatud jõudluskaalutlused. / Priit Parmakson, 01.11.2022
 - Asendatud "e-hääletanu" -> "e-hääletamine". Põhjus: inimene võib e-hääletada mitu korda (ümberhääletamine); vastavalt korrigeeritud JSON väljanimesid "evotersbatch" -> "evotingsbatch". /  Priit Parmakson, 01.09.2022
 - Eemaldatud: hääletamise kuupäeva/aja edastamine. Põhjus: turvakaalutlus (häälemüügi takistamine). / Priit Parmakson, 01.09.2022 (Sven Heibergiga arutelu alusel)
 - Lisatud: 1) ärivajaduse täpsustus; 2) e-hääletamise fakti aja edastamine; 3) edastuse kontroll ja vajadusel täiendamine või parandamine lõpliku faili abil. / Priit Parmakson, 04.05.2022 
@@ -36,7 +37,9 @@ Protokollis on arvesse võetud Rahvastikuregistri ja VIS3 vaheliste X-tee teenus
 
 Erilist tähelepanu on pööratud andmete re-sünkroonimise võimalusele tõrgete korral. Selleks on pakkide pärimine kavandatud idenmpotentsena.
 
-E-hääletanute nimekirja "peegeldamiseks" EHS-st VIS3-e võiks põhimõtteliselt kasutada ka mõnda standardset sünkroonimisprotokolli (nt Git, Rsync vms, vt \[1], \[2], \[3]). Kuna vajadus on suhteliselt lihtne, siis seda ei ole tehtud. 
+E-hääletanute nimekirja "peegeldamiseks" EHS-st VIS3-e võiks põhimõtteliselt kasutada ka mõnda standardset sünkroonimisprotokolli (nt Git, Rsync vms, vt \[1], \[2], \[3]). Kuna vajadus on suhteliselt lihtne, siis seda ei ole tehtud.
+
+Jõudluskaalutlused: E-hääletamise jooksvat nimekirja edastatakse e-hääletamise perioodil (6 päeva). E-hääletamise fakte edastatakse kokku u 300 000. E-hääletamise perioodi esimesel tunnil võib oodata u 5000 e-hääletamist; perioodi viimasel tunnil u 10 000 e-hääletamist.
 
 ## E-hääletamiste järjenumbrid
 
