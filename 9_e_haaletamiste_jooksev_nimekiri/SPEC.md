@@ -78,9 +78,7 @@ VIS3 pärib EHS-lt aktiivsete valimissündmuste loetelu.
 Vastus:
 
 ```
-[
-  { "name": "RK_2023" }
-]
+{ "elections": [ { "name": "RK_2023" } ] }
 ```
 
 EHS vastab, et aktiivseid valimissündmusi on üks - `RK_2023`.
