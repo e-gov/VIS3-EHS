@@ -171,15 +171,11 @@ Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relat
 
 Eeldatakse, et EHS-i poolt VIS3-le väljastatav on korrektne ja muutumatu (e-hääletamiste jooksva nimekirja piires). Parandus- ja muutmiskirjeid käesolev protokoll ei sisalda.
 
-Siiski on otstarbekas omada kontrollivõimalust. Ülalspetsifitseeritud andmevahetust kontrollitakse järgmiselt:
-
 Pärast e-hääletamise lõppu, valimispäeval, edastatakse EHS-st VIS3-le e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md).
 
 VIS3 operaator laeb e-hääletanute lõpliku nimekirja VIS3-e.
 
-VIS3 (moodul NIM) võrdleb reaalajalise liidese kaudu saadud andmeid lõplikus nimekirjas olevate andmetega. VIS3 koostab võrdluse kohta aruande. Võrdlusaruanne sisaldab leitud erinevusi või kinnitust, et reaalajalise liidese kaudu saadud andmed ühtivad lõpliku nimekirjaga. Erinevusteks võivad olla nii puuduvad kui ka üleliigsed andmed.
-
-Kui võrdlusaruanne sisaldab erinevusi, siis VIS3 operaator suhtleb EHS operaatoriga erinevuste põhjuste väljaselgitamiseks. VIS3 ja EHS operaatorite ühise otsuse alusel saab VIS3 operaator anda VIS3-le korralduse lõpliku nimekirja erinevused VIS3-e kanda. Selliste nn "parandus- või täienduskannete" juures algselt EHS-st saadud andmed jäävad VIS3 logidesse.
+Kui lõplikus nimekirjas on isik, keda jooksvas nimekirjas ei ole, siis loetakse isik ikkagi e-hääletanuks. VIS3 soovitavalt peaks omama võimekust sellist olukorda avastada ja operaatorile teada andma (nt logi kaudu).
 
 # Kirjandus
 
