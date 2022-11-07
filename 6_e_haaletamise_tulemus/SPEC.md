@@ -16,6 +16,8 @@ Fail on JSON-formaadis.
 
 ## Edastatav fail
 
+Aluseks on EHS senine liides VIS2-ga, mis on spetsifitseeritud dokumendis "IVXV protokollide kirjeldus" (v 1.5.0, IVXV-PR-1.5.0, 20.04.2019), [https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf](https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf), jaotises "E-hääletamise tulemus" (jaotis 9.3).
+
 Faili struktuur (JSON-skeem): [results.schema](results.schema)
 
 Faili näited (JSON):

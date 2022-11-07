@@ -16,7 +16,7 @@ Fail on JSON-formaadis. Faili ei allkirjastata.
 
 Faili struktuur on kirjeldatud JSON schema-ga. Kirjeldus on kooskõlastatud EHS omanikuga.
 
-EHS senine liides VIS2-ga on spetsifitseeritud IVXV-PR-1.5.0, jaotis 3.2 "Valimisjaoskondade ja -ringkondade nimekiri".
+EHS senine liides VIS2-ga on spetsifitseeritud dokumendis "IVXV protokollide kirjeldus" (v 1.5.0, IVXV-PR-1.5.0, 20.04.2019), [https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf](https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf), jaotises 3.2 "Valimisjaoskondade ja -ringkondade nimekiri".
 
 ## Edastatav fail
 

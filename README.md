@@ -66,5 +66,7 @@ VIS2 ja EHS omavahelisi liideseid spetsifitseerib "IVXV protokollide kirjeldus" 
 - liides "E-hääletanute nimekiri" (jaotis 9.2)
 - liides "E-hääletamise tulemus" (jaotis 9.3)
 
-EHS lähtekood: [https://github.com/vvk-ehk/ivxv](https://github.com/vvk-ehk/ivxv).
+Käesolevad spetsifikatsioonid tuginevad ülalnimetatud spetsifikatsioonidele. Täpsemalt vt konkreetsete spetsifikatsioonide juures.
+
+EHS lähtekood on kättesaadav: [https://github.com/vvk-ehk/ivxv](https://github.com/vvk-ehk/ivxv).
 
