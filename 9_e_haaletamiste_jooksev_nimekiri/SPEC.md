@@ -175,7 +175,8 @@ Pärast e-hääletamise lõppu, valimispäeval, edastatakse EHS-st VIS3-le e-hä
 
 VIS3 operaator laeb e-hääletanute lõpliku nimekirja VIS3-e.
 
-Kui lõplikus nimekirjas on isik, keda jooksvas nimekirjas ei ole, siis loetakse isik ikkagi e-hääletanuks. VIS3 soovitavalt peaks omama võimekust sellist olukorda avastada ja operaatorile teada andma (nt logi kaudu).
+Jooksva nimekirja ja lõpliku nimekirja erinevuse korral loetakse "tõe allikaks" lõplik nimekiri.
+Seega: 1) kui lõplikus nimekirjas on isik, kes jooksvas nimekirjas puudub, siis loetakse isik e-hääletanuks; 2) kui jooksvas nimekirjas on isik, kes lõplikus nimekirjas puudub, siis märge sellise isiku kohta VIS3-s küll säilitatakse, kuid töötluses ja toimingutes lähtutakse lõplikust nimekirjast, s.t loetakse, et isik ei ole e-hääletanud. VIS3 peab omama võimekust jooksva ja lõpliku nimekirja erinevust avastada ja operaatorile teada anda.
 
 # Kirjandus
 
