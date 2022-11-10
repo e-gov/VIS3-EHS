@@ -18,6 +18,10 @@ Faili struktuur on kirjeldatud JSON schema-ga. Kirjeldus on kooskõlastatud EHS 
 
 EHS senine liides VIS2-ga on spetsifitseeritud dokumendis "IVXV protokollide kirjeldus" (v 1.5.0, IVXV-PR-1.5.0, 20.04.2019), [https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf](https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf), jaotises 3.2 "Valimisjaoskondade ja -ringkondade nimekiri".
 
+Valimistel, kus saavad osaleda alaliselt välisriigis elavad valijad kantakse nad valijate nimekirja tunnusega `FOREIGN`. Sellisel juhul peab valimisringkondade nimekiri sisaldama regiooni nende valijate jaoks ning iga ringkond peab sisaldama eraldi jaoskonda, kus nende häälte üle arvestust peetakse. Nii selle regiooni kui jaoskondade tunnuseks on fiktiivne EHAK: `0000`. Näitefailis [districts_RK.json](districts_RK.json) on näha nii regiooni korrektne lisamine kui ka välishääletajate jaoskonna korrektne lisamine igasse ringkonda.
+
+
+
 ## Edastatav fail
 
 Faili struktuur (JSON-skeem): [districts.schema](districts.schema)
