@@ -3,7 +3,7 @@
 Valimissündmuse identifikaator on sõne, mis koosneb kahest kohustuslikust ja kahest valikulisest osast:
 1. valimissündmuse tüüp, vastavalt allolevale tabelile, nt `RK`.
 2. aastanumbrist (nt `2023`)
-3. valikulisest erakorraliste valimise tunnusest `_E` ja
+3. valikulisest erakorraliste valimiste tunnusest `_E` ja
 4. valikulisest järjenumbrist <nr>, nt `2`.
 
 Ülalnimetatud osad eraldatakse üksteisest allkriipsudega `_`.
