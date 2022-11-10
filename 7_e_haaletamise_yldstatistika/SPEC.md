@@ -8,4 +8,6 @@ Päringu vastuses tagastatav fail:
 
 JSON-skeem: [online-voters-total.schema](online-voters-total.schema) 
 
+Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
+
 Näide (JSON): [online-voters-total.json](online-voters-total.json)

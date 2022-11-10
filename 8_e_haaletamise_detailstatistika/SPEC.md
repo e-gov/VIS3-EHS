@@ -18,4 +18,6 @@ Faili edastatakse eelhääletamise ajal, kord päevas.
 
 JSON-skeem: [online-voters-counties.schema](online-voters-counties.schema)
 
+Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
+
 Näide (JSON): [online-voters-counties.json](online-voters-counties.json)

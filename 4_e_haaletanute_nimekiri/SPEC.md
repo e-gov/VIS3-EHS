@@ -22,6 +22,8 @@ Aluseks on EHS senine liides VIS2-ga, mis on spetsifitseeritud dokumendis "IVXV 
 
 Faili struktuur (JSON-skeem): [onlinevoters.schema](onlinevoters.schema)
 
+Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
+
 Faili näited (JSON):
 
 - [onlinevoters_EP.json](onlinevoters_EP.json)

@@ -20,6 +20,8 @@ EHS senine liides VIS2-ga on spetsifitseeritud dokumendis "IVXV protokollide kir
 
 ## Edastatav fail
 
+Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
+
 Faili struktuur (JSON-skeem): [districts.schema](districts.schema)
 
 Näited (JSON):

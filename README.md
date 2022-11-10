@@ -31,6 +31,7 @@ Joonis 1. VIS3 ja EHS liidesed (ülevaade). Andmed liiguvad noole suunas. Masinl
 
 [9 E-hääletamiste jooksev nimekiri](9_e_haaletamiste_jooksev_nimekiri)
 
+Spetsifikatsioonides kasutatav valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](valimissündmuse_identifikaator.md).
 ## Usalduse loomine masinliidestes
 
 Masinliidesed kaitstakse HTTPS-ga ja TLS mõlemapoolse autentimisega.

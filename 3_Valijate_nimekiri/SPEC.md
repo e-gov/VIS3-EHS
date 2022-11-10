@@ -150,7 +150,7 @@ Päiseridade sisu on järgmine:
     väärtus 2.
 2.  `election_identifier` - valimissündmuse identifikaator, mille pikkus on
     piiratud 28 tähemärgiga ASCII kooditabelist. Nimekirja rakendamine toimub
-    ainult vastava identifikaatoriga valimissündmuse kontekstis.
+    ainult vastava identifikaatoriga valimissündmuse kontekstis. Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
 3.  `changeset` - nimekirja järjekorranumber. Rangelt kasvav number (0, 1, 2,
     ...), mis defineerib nimekirjade rakendamise järjekorra. Algnimekirja
     järjekorranumbriks on 0.
