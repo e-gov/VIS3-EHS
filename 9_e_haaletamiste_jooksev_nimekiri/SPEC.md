@@ -4,6 +4,7 @@ kavand v0.4
 
 ## Muutelugu
 
+- Täpsustatud e-hääletamiste väljanäitamist VIS3-s. / Priit Parmakson, 15.11.2022
 - Lisatud jõudluskaalutlused. / Priit Parmakson, 01.11.2022
 - Asendatud "e-hääletanu" -> "e-hääletamine". Põhjus: inimene võib e-hääletada mitu korda (ümberhääletamine); vastavalt korrigeeritud JSON väljanimesid "evotersbatch" -> "evotingsbatch". /  Priit Parmakson, 01.09.2022
 - Eemaldatud: hääletamise kuupäeva/aja edastamine. Põhjus: turvakaalutlus (häälemüügi takistamine). / Priit Parmakson, 01.09.2022 (Sven Heibergiga arutelu alusel)
@@ -177,6 +178,8 @@ VIS3 operaator laeb e-hääletanute lõpliku nimekirja VIS3-e.
 
 Jooksva nimekirja ja lõpliku nimekirja erinevuse korral loetakse "tõe allikaks" lõplik nimekiri.
 Seega: 1) kui lõplikus nimekirjas on isik, kes jooksvas nimekirjas puudub, siis loetakse isik e-hääletanuks; 2) kui jooksvas nimekirjas on isik, kes lõplikus nimekirjas puudub, siis märge sellise isiku kohta VIS3-s küll säilitatakse, kuid töötluses ja toimingutes lähtutakse lõplikust nimekirjast, s.t loetakse, et isik ei ole e-hääletanud. VIS3 peab omama võimekust jooksva ja lõpliku nimekirja erinevust avastada ja operaatorile teada anda.
+
+EHS-st VIS3-e edastatud e-hääletamise faktid on VIS3 kasutajaliideses nähtavad valimiste korraldajale, vaates "Valijaga seotud toimingute ajalugu". Kui valija e-hääletas mitu korda, siis on valijaga seotud toimingute ajaloos esitatud kõik valija e-hääletamised. E-hääletamise juures on näha kuupäev ja kellaaeg, millal e-hääletamise fakt EHS-st VIS3-e edastati.
 
 # Kirjandus
 
