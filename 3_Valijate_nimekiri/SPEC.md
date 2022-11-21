@@ -13,7 +13,7 @@ Käesolevat spetsifikatsiooni tuleb kasutada koos VIS3 EHS API OpenAPI spetsifik
 
 ## 2. Sõnumivahetus nimekirjade edastamiseks
 
-Valijate nimekirja põhjal tuvastab EHS, isiku hääleõiguse ja
+Valijate nimekirja põhjal tuvastab EHS isiku hääleõiguse ja
 ringkonnakuuluvuse. Valijate nimekiri võib hääletamisperioodi jooksul muutuda,
 sellest tulenevalt võib valija saada hääleõiguse, jääda oma hääleõigusest ilma
 või saada hääleõiguse senisest erinevas ringkonnas. EHS peab nende muutustega
@@ -22,9 +22,9 @@ arvestama. Muudatused saab EHS VIS3 vahendusel muudatusnimekirjadena.
 Spetsifikatsioonis defineeritud liidese vahendusel suhtlevad vahetult EHS ja
 VIS3:
 
--   VIS3 liidestub Rahavastikuregistri andmekoguga ning hangib seal nii valijate
-    algnimekirja kui muudatusnimekirjad.
--   EHS esitab päringuid muudatusnimekirjade saamiseks VIS3 käest.
+-   VIS3 liidestub Rahvastikuregistri andmekoguga ning hangib seal nii valijate
+    algnimekirja kui ka muudatusnimekirjad.
+-   EHS esitab VIS3-le päringuid muudatusnimekirjade saamiseks.
 
 Kaudselt on liidesega seotud:
 
@@ -65,7 +65,7 @@ Valijate algnimekirja laadimine toimub järgmistes etappides:
 ![Joonis 3: Muudatusnimekirja edastamine](model/list_changeset.png)
 
 Valijate nimekirja muudatusnimekirja laadimise algatab EHS. Muudatusnimekirjad
-on järjestatud, nii EHS kui VIS3 peavad arvet, milline on viimane loodud
+on järjestatud, nii EHS kui ka VIS3 peavad arvet, milline on viimane loodud
 muudatusnimekiri.
 
 EHS algatab uue muudatusnimekirja laadimise pöördudes uue järjekorranumbriga
@@ -75,7 +75,7 @@ pärida, kasutades varasemat järjekorranumbrit.
 VIS3 saab muudatused Rahvastikuregistri X-tee teenusest. VIS3 poolne muudatuste
 hankimine on EHSile muudatuste esitamisest sõltumatu paralleelprotsess. See
 tähendab, et üks EHSile minev muudatusnimekiri võib sisaldada mitut
-Rahavastikuregistrist tulnud muudatust.
+Rahvastikuregistrist tulnud muudatust.
 
 Muudatusnimekirjade edastamine EHSi käib järgmiselt:
 
@@ -89,11 +89,11 @@ Muudatusnimekirjade edastamine EHSi käib järgmiselt:
     
 **Märkused**
 - Kui järjekorras järgmise muudatusnimekirja pärimisel muudatuskirjed puuduvad
-  vastatakse HTTP staatusega 404 (not-found).
+  vastatakse HTTP staatusega `404` (not found).
 
 **Märkused**
 - Kui päritakse muudatusnimekirja suurema järjenumbriga, kui tegelik järgmise
-  muudatusnimekirja järjenumber, vastatakse HTTP staatusega 409 (conflict).
+  muudatusnimekirja järjenumber, vastatakse HTTP staatusega `409` (conflict).
 
 ### 2.4 Veajuhtumite lahendamine
 
