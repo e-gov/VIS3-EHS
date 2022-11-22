@@ -215,7 +215,7 @@ Nimekirju töötlev rakendus lähtub järgmistest reeglitest:
     1.  Kooskõlalisust kontrollitakse kirjete esinemisjärjekorras.
     2.  Kui tegevus on `lisamine`, siis ei tohi vastava isikukoodiga kirjet
         rakenduse andmebaasis olla.
-    3.  Kui tegevus on `eemaldamine`, siis peab vastava isikukoodiga kirje
+    3.  Kui tegevus on `kustutamine`, siis peab vastava isikukoodiga kirje
         rakenduse andmebaasis olema ning tema `kov_code` ja
         `electoral_district_id` väljade väärtused peavad juba registreeritutega
         ühtima.
@@ -225,7 +225,7 @@ haldusüksusest või valimisringkonnast teise, siis kantakse valijate nimekirja
 muudatuste hulka üks kustutamise kirje, millega valija oma eelmisest üksusest
 kustutatakse ja üks lisamise kirje, millega valija uues üksuses valijate
 nimekirja lisatakse. Ka kõik teised muudatused valija andmetes - näiteks
-nimemuutus - toimuvad läbi vana kirje eemaldamise ja uue lisamise.
+nimemuutus - toimuvad läbi vana kirje kustutamise ja uue lisamise.
 
 Valijate algnimekirjas on ainult lisamiskirjed, iga valija kohta maksimaalselt
 üks kirje. Muudatusnimekirjas peavad ühe valija kohta käivad kirjed olema
