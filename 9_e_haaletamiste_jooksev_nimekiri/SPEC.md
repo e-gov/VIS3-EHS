@@ -168,6 +168,14 @@ Töötlus peab olema idempotentne (samajõuline) - selles mõttes, et VIS3 võib
 
 Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relatsioonilises andmebaasis, vaid etcd mäluteenuses. 
 
+# Teenuse pakkumise ajaline ulatus
+
+Konkreetse valimissündmuse kohta pakub EHS e-hääletamiste jooksvat nimekirja ainult piiratud perioodil. See periood hõlmab e-hääletamise perioodi (kehtiva õiguse kohaselt 6 päeva) koos lühikeste siirdeperioodidega enne ja pärast.
+
+Kui EHS valimissündmuse kohta e-hääletamiste jooksvat nimekirja enam ei paku, siis päringud otspunktidesse "Viimane järjenumber" ja "e-hääletanute pakk" saavad HTTP vastuskoodi `410 Gone`.
+
+Valimissündmuste loetelu pakub EHS pidevalt (otspunkt "Valimissündmuste loetelu"). Loetelus on valimissündmused, mille kohta EHS on valmis e-hääletamiste jooksvat nimekirja pakkuma.
+
 # Kontroll ja veaolukordade käsitlemine
 
 Eeldatakse, et EHS-i poolt VIS3-le väljastatav on korrektne ja muutumatu (e-hääletamiste jooksva nimekirja piires). Parandus- ja muutmiskirjeid käesolev protokoll ei sisalda.

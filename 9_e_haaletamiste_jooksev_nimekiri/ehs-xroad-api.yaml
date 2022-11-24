@@ -57,6 +57,8 @@ paths:
             text/plain:
               schema:
                 $ref: "#/components/schemas/GenericError"
+        410:
+          description: Enam ei paku
         500:
           description: |
             "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
@@ -96,6 +98,8 @@ paths:
             text/plain:
               schema:
                 $ref: "#/components/schemas/GenericError"
+        410:
+          description: Enam ei paku
         500:
           description: |
             "Tehniline viga" - üldnimetus olukordadele, kus EHS ei suuda päringut teenindada.
