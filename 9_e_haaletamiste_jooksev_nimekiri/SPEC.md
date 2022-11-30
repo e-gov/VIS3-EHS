@@ -168,6 +168,11 @@ Töötlus peab olema idempotentne (samajõuline) - selles mõttes, et VIS3 võib
 
 Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relatsioonilises andmebaasis, vaid etcd mäluteenuses. 
 
+# Kohaletoimetamise garantii
+Sõltuvalt e-hääletamise sagedusest ja EHS jõudlusest ning seadistusest võib EHS-s juhtuda, et e-hääletamise väga suure sageduse perioodil e-hääletamise faktile järjenumbri omistamine ajalõpu (ingl timeout) tõttu ebaõnnestub. Selline e-hääletamise fakt jääb jooksvas nimekirjas VIS3-e edastamata.
+
+Seega jooksev nimekiri ei anna kõigi e-hääletamiste VIS3-e jooksvalt kohaletoimetamise garantiid. VIS3-e kohaletoimetatud fakte tuleb käsitada informatiivsetena. E-hääletamise faktid toimetatakse VIS3-e kindlalt täielikus koosseisus e-hääletanute (lõplikus) nimekirjas, pärast e-hääletamise perioodi lõppu (eraldi liides EHS ja VIS3 vahel). 
+
 # Teenuse pakkumise ajaline ulatus
 
 Konkreetse valimissündmuse kohta pakub EHS e-hääletamiste jooksvat nimekirja ainult piiratud perioodil. See periood hõlmab e-hääletamise perioodi (kehtiva õiguse kohaselt 6 päeva) koos lühikeste siirdeperioodidega enne ja pärast.
