@@ -4,6 +4,7 @@ kavand v0.4
 
 ## Muutelugu
 
+- Lisatud OpenAPI kirjelduse publitseerimise teave. / Priit Parmakson, 13.12.2022
 - Täpsustatud e-hääletamiste väljanäitamist VIS3-s. / Priit Parmakson, 15.11.2022
 - Lisatud jõudluskaalutlused. / Priit Parmakson, 01.11.2022
 - Asendatud "e-hääletanu" -> "e-hääletamine". Põhjus: inimene võib e-hääletada mitu korda (ümberhääletamine); vastavalt korrigeeritud JSON väljanimesid "evotersbatch" -> "evotingsbatch". /  Priit Parmakson, 01.09.2022
@@ -66,7 +67,13 @@ Teenus pakub järgmisi otspunkte:
 
 3  `GET /elections/{electionId}/evotingsbatchfrom/{fromseqno}`. "e-hääletamiste pakk". Selle päringuga pärib VIS3 EHS-lt valimissündmuse `{electionId}` e-hääletamiste paki, alatest e-hääletamisest järjenumbriga `{fromseqno}`.
 
-Päringute ja vastuste andmestruktuuride ja samuti vastuskoodide spetsifikatsiooni vt OpenAPI spetsifikatsioonis: [ehs-xroad-api.yaml](ehs-xroad-api.yaml). 
+Päringute ja vastuste andmestruktuuride ja samuti vastuskoodide spetsifikatsiooni vt OpenAPI spetsifikatsioonis: [ehs-xroad-api.yaml](ehs-xroad-api.yaml).
+
+Teenuse OpenAPI spetsifikatsioon publitseeritakse turvaserveris, vastavalt spetsifikatsioonile [https://www.x-tee.ee/docs/live/xroad/pr-mrest_x-road_service_metadata_protocol_for_rest.html#4-retrieving-list-of-services](X-Road: Service Metadata Protocol for REST), jaotis 5 "Retrieving the OpenAPI description of a Service".
+
+Teenuse OpenAPI spetsifikatsioon näitepäring:
+
+`curl -H "accept: application/json" -H "X-Road-Client:ee-dev/COM/<MEMBER>/dev" "https://.../r1/ee-dev/COM/<MEMBER>/ehs/getOpenAPI?serviceCode=e-votings-running-list"`
 
 ## Otspunkt "Valimissündmuste loetelu"
 
