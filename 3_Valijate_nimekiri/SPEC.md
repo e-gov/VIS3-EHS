@@ -53,7 +53,7 @@ edasiseks automaatseks laadimiseks.
 
 Valijate algnimekirja laadimine toimub järgmistes etappides:
 
--   VIS3 kasutab Rahavastikuregistri X-tee teenust valijate algnimekirja
+-   VIS3 kasutab Rahvastikuregistri X-tee teenust valijate algnimekirja
     laadimiseks (sammud 1-3).
 -   EHS operaator pärib allkirjastatud algnimekirja VIS3 teenusest, ning
     allkirjastab algnimekirja täiendavalt ID-kaardiga (sammud 4-5).
@@ -174,6 +174,8 @@ Kirje koosneb väljadest, mille sisu on järgmine:
     identifikaator haldusüksuse sees. RK, EP ja RH valimiste korral on
     identifikaator haldusüksuste ülene.
 
+Välju `voter_name`, `kov_code` ja `electoral_district_id` kasutatakse ainult
+lisamiskirjes (`action` väärtus `lisamine`).
 
 Andmevormingu formaalne kirjeldus Backus-Naur notatsioonis:
 
@@ -190,12 +192,16 @@ period = rfc3339_from TAB rfc3339_to
 # Kirje väljade definitsioonid
 person_code = 11DIGIT
 voter_name = 1*100UTF-8-CHAR
-action = "lisamine" | "kustutamine"
+action = add_action | delete_action
+add_action = "lisamine"
+delete_action = "kustutamine"
 kov_code = 4DIGIT | "FOREIGN"
 electoral_district_id = 1*10DIGIT
 
 # Kirje definitsioon
-voter = person_code TAB voter_name TAB action TAB kov_code TAB electoral_district_id LF
+voter =
+add_action TAB person_code TAB voter_name TAB kov_code TAB electoral_district_id LF |
+delete_action TAB person_code LF
 
 # Nimekirja definitsioon
 voter_list = version LF election_identifier LF changeset LF period LF *voter
@@ -215,10 +221,8 @@ Nimekirju töötlev rakendus lähtub järgmistest reeglitest:
     1.  Kooskõlalisust kontrollitakse kirjete esinemisjärjekorras.
     2.  Kui tegevus on `lisamine`, siis ei tohi vastava isikukoodiga kirjet
         rakenduse andmebaasis olla.
-    3.  Kui tegevus on `kustutamine`, siis peab vastava isikukoodiga kirje
-        rakenduse andmebaasis olema ning tema `kov_code` ja
-        `electoral_district_id` väljade väärtused peavad juba registreeritutega
-        ühtima.
+    3.  Kui tegevus on `kustutamine`, siis rakendus kontrollib, kas vastava isikukoodiga kirje on
+        rakenduse andmebaasis olemas. Kui ei ole, siis rakendus logib veateate ja jätkab järgmiste kirjete töötlust.
 
 Kui valijaga soetud andmeid on vaja muuta, näiteks valija liigub ühest
 haldusüksusest või valimisringkonnast teise, siis kantakse valijate nimekirja
@@ -247,15 +251,15 @@ Valijate algnimekiri, 0.
 RK2051<LF>
 0<LF>
 2021-01-12T02:00:00Z<TAB>2021-01-12T02:00:00Z<LF>
-10000000001<TAB>NIMI NIMESTE1<TAB>lisamine<TAB>0482<TAB>3<LF>
-20000000002<TAB>NIMI NIMESTE2<TAB>lisamine<TAB>0514<TAB>7<LF>
-30000000003<TAB>NIMI NIMESTE3<TAB>lisamine<TAB>0735<TAB>7<LF>
-40000000004<TAB>NIMI NIMESTE4<TAB>lisamine<TAB>0482<TAB>3<LF>
-50000000005<TAB>NIMI NIMESTE5<TAB>lisamine<TAB>0339<TAB>1<LF>
-60000000006<TAB>NIMI NIMESTE6<TAB>lisamine<TAB>0296<TAB>4<LF>
-70000000007<TAB>NIMI NIMESTE7<TAB>lisamine<TAB>FOREIGN<TAB>11<LF>
-80000000008<TAB>NIMI NIMESTE8<TAB>lisamine<TAB>0793<TAB>10<LF>
-90000000009<TAB>NIMI NIMESTE9<TAB>lisamine<TAB>FOREIGN<TAB>3<LF>
+lisamine<TAB>10000000001<TAB>NIMI NIMESTE1<TAB>0482<TAB>3<LF>
+lisamine<TAB>20000000002<TAB>NIMI NIMESTE2<TAB>0514<TAB>7<LF>
+lisamine<TAB>30000000003<TAB>NIMI NIMESTE3<TAB>0735<TAB>7<LF>
+lisamine<TAB>40000000004<TAB>NIMI NIMESTE4<TAB>0482<TAB>3<LF>
+lisamine<TAB>50000000005<TAB>NIMI NIMESTE5<TAB>0339<TAB>1<LF>
+lisamine<TAB>60000000006<TAB>NIMI NIMESTE6<TAB>0296<TAB>4<LF>
+lisamine<TAB>70000000007<TAB>NIMI NIMESTE7<TAB>FOREIGN<TAB>11<LF>
+lisamine<TAB>80000000008<TAB>NIMI NIMESTE8<TAB>0793<TAB>10<LF>
+lisamine<TAB>90000000009<TAB>NIMI NIMESTE9<TAB>FOREIGN<TAB>3<LF>
 ```
 
 Muudatusnimekiri, 1:
@@ -270,10 +274,10 @@ Muudatusnimekiri, 1:
 RK2051<LF>
 1<LF>
 2021-01-12T02:00:00Z<TAB>2021-01-13T02:00:00Z<LF>
-20000000002<TAB>NIMI NIMESTE2<TAB>kustutamine<TAB>0514<TAB>7<LF>
-20000000002<TAB>NIMI NIMESTE2<TAB>lisamine<TAB>0735<TAB>7<LF>
-30000000003<TAB>NIMI NIMESTE3<TAB>kustutamine<TAB>0735<TAB>7<LF>
-11000000011<TAB>NIMI NIMESTE11<TAB>lisamine<TAB>0653<TAB>4<LF>
+kustutamine<TAB>20000000002<LF>
+lisamine<TAB>20000000002<TAB>NIMI NIMESTE2<TAB>0735<TAB>7<LF>
+kustutamine<TAB>30000000003<LF>
+lisamine<TAB>11000000011<TAB>NIMI NIMESTE11<TAB>0653<TAB>4<LF>
 ```
 
 Muudatusnimekiri, 2:
@@ -286,9 +290,9 @@ Muudatusnimekiri, 2:
 RK2051<LF>
 2<LF>
 2021-01-13T02:00:00Z<TAB>2021-01-14T02:00:00Z<LF>
-20000000002<TAB>NIMI NIMESTE2<TAB>kustutamine<TAB>0735<TAB>7<LF>
-20000000002<TAB>UUSNIMI NIMESTE2<TAB>lisamine<TAB>0735<TAB>7<LF>
-60000000006<TAB>NIMI NIMESTE6<TAB>kustutamine<TAB>0296<TAB>4<LF>
+kustutamine<TAB>20000000002<LF>
+lisamine<TAB>20000000002<TAB>UUSNIMI NIMESTE2<TAB>0735<TAB>7<LF>
+kustutamine<TAB>60000000006<LF>
 ```
 
 Muudatusnimekiri, 3:
@@ -301,9 +305,9 @@ Muudatusnimekiri, 3:
 RK2051<LF>
 3<LF>
 2021-01-14T02:00:00Z<TAB>2021-01-15T02:00:00Z<LF>
-20000000003<TAB>NIMI NIMESTE4<TAB>kustutamine<TAB>0735<TAB>7<LF>
-10000000003<TAB>UUSNIMI NIMESTE4<TAB>lisamine<TAB>0735<TAB>7<LF>
-60000000006<TAB>NIMI NIMESTE6<TAB>lisamine<TAB>0296<TAB>4<LF>
+kustutamine<TAB>20000000003<LF>
+lisamine<TAB>10000000003<TAB>UUSNIMI NIMESTE4<TAB>0735<TAB>7<LF>
+lisamine<TAB>60000000006<TAB>NIMI NIMESTE6<TAB>0296<TAB>4<LF>
 ```
 
 ## 4. Nimekirja signeerimine
