@@ -9,7 +9,20 @@ konfidentsiaalset siseehitust ega liideste konfidentsiaalseid elemente.
 
 ![VIS3 ja EHS liidesed (ülevaade)](img/Ylevaade.png)
 
-Joonis 1. VIS3 ja EHS liidesed (ülevaade). Andmed liiguvad noole suunas. Masinliidestes on teenust pakkuvad otspunktid VIS3 poolel. Liidesed on täpsemalt kirjeldatud allpool.
+Joonis 1. VIS3 ja EHS liidesed (ülevaade).
+
+Vasakul on VIS3, mooduli täpsusega:
+
+- KAN - Kandidaadimoodul
+- NIM - Nimekirjamoodul
+- TUL - Valimistulemuse moodul
+- VAL - Valimissündmuse moodul
+- VTA - Valimistulemuse avalikustamise moodul.
+
+Andmed liiguvad noole suunas. HTTPS masinliidestes on teenust pakkuvad otspunktid VIS3 poolel. X-tee liideses on teenusepakkujaks EHS.
+Inim-masinliides tähendab seda, et ühe süsteemi operaator laeb faili süsteemist alla ja edastab teise süsteemi operaatorile, kes laeb faili teise süsteemi üles.
+
+Liidesed on täpsemalt kirjeldatud allpool.
 
 ## Spetsifikatsioonid
 
