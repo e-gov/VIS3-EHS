@@ -3,7 +3,8 @@ autonumber
 actor "EHS operaator" as ac_ehs
 participant "EHS" as ehs
 participant "VIS" as vis
-actor "VIS operaator" as ac_vis
+actor "VIS3 operaator" as ac_vis
+actor "VIS3 peakasutaja" as ac_vis_main
 participant "RR" as rr
 
 activate vis
@@ -15,12 +16,13 @@ rr -> vis : RRValimisteAlgNimekiriResponse
 
 ...Algnimekiri edastatakse EHS operaatorile...
 
-ac_ehs -> vis: Ekspordi valijate algnimekiri
-vis -> ac_ehs: Valijate algnimekiri 0
+ac_vis_main -> vis: Ekspordi valijate algnimekiri
+vis -> ac_vis_main: Valijate algnimekiri 0
 
 ...EHS on valmis algnimekirja rakendama...
 
-ac_ehs -> ac_ehs: Allkirjasta valijate algnimekiri 0
+ac_vis_main -> ac_vis_main: Allkirjasta valijate algnimekiri 0
+ac_vis_main -> ac_ehs: Edasta allkirjastatud valijate algnimekiri 0
 activate ehs
 ac_ehs -> ehs: Impordi valijate algnimekiri 0
 ehs -> ehs: Impordi valijate algnimekiri 0
