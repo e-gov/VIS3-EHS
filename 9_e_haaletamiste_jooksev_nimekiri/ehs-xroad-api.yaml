@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: E-hääletamiste jooksev nimekiri
+  title: E-hääletamiste nimekiri
   description: EHS poolt VIS3-le osutatava X-tee teenuse spetsifikatsioon
   license:
     name: MIT
