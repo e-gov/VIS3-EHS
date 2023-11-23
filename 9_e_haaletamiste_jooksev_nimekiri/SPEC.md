@@ -1,9 +1,10 @@
-# E-hääletamiste jooksev nimekiri
+# E-hääletamiste nimekiri
 
 kavand v0.4
 
 ## Muutelugu
 
+- Eemaldatud sõna "jooksev" / Priit Parmakson, 23.11.2022
 - Lisatud OpenAPI kirjelduse publitseerimise teave. / Priit Parmakson, 13.12.2022
 - Täpsustatud e-hääletamiste väljanäitamist VIS3-s. / Priit Parmakson, 15.11.2022
 - Lisatud jõudluskaalutlused. / Priit Parmakson, 01.11.2022
@@ -17,13 +18,13 @@ kavand v0.4
 
 ## Ülevaade
 
-Käesolev spetsifikatsioon määratleb protokolli e-hääletamiste nimekirja jooksvaks edastamiseks e-hääletamise süsteemist (edaspidi - EHS) Valimiste infosüsteemi (edaspidi - VIS3).
+Käesolev spetsifikatsioon määratleb protokolli e-hääletamiste nimekirja edastamiseks e-hääletamise süsteemist (edaspidi - EHS) Valimiste infosüsteemi (edaspidi - VIS3).
 
 Varasematel valimistel (k.a KOV 2021) on peale hääletamise lõppu, valimispäeval edastatud EHS-st VIS3-le e-hääletanute nimekiri (edaspidi - e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md).
 
 Siiski on vajadus VIS3-s saada teavet, kas valija on e-hääletanud, juba enne ülalnimetatud lõplikku edastust. Valija, kes on e-hääletanud, võib tulla eelhääletamise perioodil valimisjaoskonda ja soovida paberil hääletada. Valimisjaoskonna töötajal oleks hea omada võimalust VIS3-st vaadata, kas valija on e-hääletanud. Seda teavet saab muuhulgas kasutada valija hoiatamiseks, et paberhääletamisega tema e-hääletamine tühistub. 
 
-E-hääletamiste jooksev nimekiri edastatakse EHS-st VIS3-e X-tee teenusega.
+E-hääletamiste nimekiri edastatakse EHS-st VIS3-e X-tee teenusega.
 
 Teenust pakub EHS. VIS3 pöördub regulaarselt teenuse poole. EHS edastab e-hääletamiste andmete paki. VIS3 saab paki ja salvestab andmed VIS3 andmebaasi.
 
@@ -57,11 +58,11 @@ Teenuse vastutav töötleja on Riigi Valimisteenistus (RVT). Teenuse volitatud t
 
 Teenust kasutav süsteem on VIS3. Teenust kasutava süsteemi vastutav töötleja on RIA.
 
-Teenuse ärinimi on "E-hääletamiste jooksev nimekiri". Teenuse tehniline nimi (X-tee REST teenusekood, Service Code) on `e-votings-running-list`.
+Teenuse ärinimi on "E-hääletamiste nimekiri". Teenuse tehniline nimi (X-tee REST teenusekood, Service Code) on `e-votings-running-list`.
 
 Teenus pakub järgmisi otspunkte:
 
-1  `GET /elections`.  "Valimissündmuste loetelu" väljastab aktiivsete valimissündmuste loetelu. Aktiivne valimissündmus teenuse kontekstis on selline, mille kohta EHS on valmis väljastama jooksvat e-hääletamiste nimekirja.
+1  `GET /elections`.  "Valimissündmuste loetelu" väljastab aktiivsete valimissündmuste loetelu. Aktiivne valimissündmus teenuse kontekstis on selline, mille kohta EHS on valmis väljastama e-hääletamiste nimekirja.
 
 2  `GET /elections/{electionId}/lastseqno`. "Viimane järjenumber" väljastab konkreetse valimissündmuse viimase EHS-s registreeritud e-hääletamise järjenumbri.
 
