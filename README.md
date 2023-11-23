@@ -7,9 +7,11 @@ konfidentsiaalset siseehitust ega liideste konfidentsiaalseid elemente.
 
 ## Ülevaade
 
-![VIS3 ja EHS liidesed (ülevaade)](img/Ylevaade.png)
+![VIS3 ja EHS liidesed (ülevaade)](img/VIS-EHS_v02.png)
 
 Joonis 1. VIS3 ja EHS liidesed (ülevaade).
+
+Märkus: Joonise originaal vt VIS3 dok-s RIAs, fail "EHS".
 
 Vasakul on VIS3, mooduli täpsusega:
 
@@ -42,7 +44,7 @@ Liidesed on täpsemalt kirjeldatud allpool.
 
 [8 E-hääletamisest osavõtu detailstatistika](8_e_haaletamise_detailstatistika/SPEC.md)
 
-[9 E-hääletamiste jooksev nimekiri](9_e_haaletamiste_jooksev_nimekiri)
+[9 E-hääletamiste nimekiri](9_e_haaletamiste_nimekiri)
 
 Spetsifikatsioonides kasutatav valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](valimissündmuse_identifikaator.md).
 ## Usalduse loomine masinliidestes
