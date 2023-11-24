@@ -177,28 +177,28 @@ Töötlus peab olema idempotentne (samajõuline) - selles mõttes, et VIS3 võib
 Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relatsioonilises andmebaasis, vaid etcd mäluteenuses. 
 
 # Kohaletoimetamise garantii
-Sõltuvalt e-hääletamise sagedusest ja EHS jõudlusest ning seadistusest võib EHS-s juhtuda, et e-hääletamise väga suure sageduse perioodil e-hääletamise faktile järjenumbri omistamine ajalõpu (ingl timeout) tõttu ebaõnnestub. Selline e-hääletamise fakt jääb jooksvas nimekirjas VIS3-e edastamata.
+Sõltuvalt e-hääletamise sagedusest ja EHS jõudlusest ning seadistusest võib EHS-s juhtuda, et e-hääletamise väga suure sageduse perioodil e-hääletamise faktile järjenumbri omistamine ajalõpu (ingl timeout) tõttu ebaõnnestub. Selline e-hääletamise fakt jääb e-hääletamiste nimekirjas VIS3-e edastamata.
 
-Seega jooksev nimekiri ei anna kõigi e-hääletamiste VIS3-e jooksvalt kohaletoimetamise garantiid. VIS3-e kohaletoimetatud fakte tuleb käsitada informatiivsetena. E-hääletamise faktid toimetatakse VIS3-e kindlalt täielikus koosseisus e-hääletanute (lõplikus) nimekirjas, pärast e-hääletamise perioodi lõppu (eraldi liides EHS ja VIS3 vahel). 
+Seega e-hääletamiste nimekiri ei anna kõigi e-hääletamiste VIS3-e jooksvalt kohaletoimetamise garantiid. VIS3-e kohaletoimetatud fakte tuleb käsitada informatiivsetena. E-hääletamise faktid toimetatakse VIS3-e kindlalt täielikus koosseisus e-hääletanute (lõplikus) nimekirjas, pärast e-hääletamise perioodi lõppu (eraldi liides EHS ja VIS3 vahel). 
 
 # Teenuse pakkumise ajaline ulatus
 
-Konkreetse valimissündmuse kohta pakub EHS e-hääletamiste jooksvat nimekirja ainult piiratud perioodil. See periood hõlmab e-hääletamise perioodi (kehtiva õiguse kohaselt 6 päeva) koos lühikeste siirdeperioodidega enne ja pärast.
+Konkreetse valimissündmuse kohta pakub EHS e-hääletamiste nimekirja ainult piiratud perioodil. See periood hõlmab e-hääletamise perioodi (kehtiva õiguse kohaselt 6 päeva) koos lühikeste siirdeperioodidega enne ja pärast.
 
-Kui EHS valimissündmuse kohta e-hääletamiste jooksvat nimekirja enam ei paku, siis päringud otspunktidesse "Viimane järjenumber" ja "e-hääletanute pakk" saavad HTTP vastuskoodi `410 Gone`.
+Kui EHS valimissündmuse kohta e-hääletamiste nimekirja enam ei paku, siis päringud otspunktidesse "Viimane järjenumber" ja "e-hääletanute pakk" saavad HTTP vastuskoodi `410 Gone`.
 
-Valimissündmuste loetelu pakub EHS pidevalt (otspunkt "Valimissündmuste loetelu"). Loetelus on valimissündmused, mille kohta EHS on valmis e-hääletamiste jooksvat nimekirja pakkuma.
+Valimissündmuste loetelu pakub EHS pidevalt (otspunkt "Valimissündmuste loetelu"). Loetelus on valimissündmused, mille kohta EHS on valmis e-hääletamiste nimekirja pakkuma.
 
 # Kontroll ja veaolukordade käsitlemine
 
-Eeldatakse, et EHS-i poolt VIS3-le väljastatav on korrektne ja muutumatu (e-hääletamiste jooksva nimekirja piires). Parandus- ja muutmiskirjeid käesolev protokoll ei sisalda.
+Eeldatakse, et EHS-i poolt VIS3-le väljastatav on korrektne ja muutumatu (e-hääletamiste nimekirja piires). Parandus- ja muutmiskirjeid käesolev protokoll ei sisalda.
 
 Pärast e-hääletamise lõppu, valimispäeval, edastatakse EHS-st VIS3-le e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md).
 
 VIS3 operaator laeb e-hääletanute lõpliku nimekirja VIS3-e.
 
 Jooksva nimekirja ja lõpliku nimekirja erinevuse korral loetakse "tõe allikaks" lõplik nimekiri.
-Seega: 1) kui lõplikus nimekirjas on isik, kes jooksvas nimekirjas puudub, siis loetakse isik e-hääletanuks; 2) kui jooksvas nimekirjas on isik, kes lõplikus nimekirjas puudub, siis märge sellise isiku kohta VIS3-s küll säilitatakse, kuid töötluses ja toimingutes lähtutakse lõplikust nimekirjast, s.t loetakse, et isik ei ole e-hääletanud. VIS3 peab omama võimekust jooksva ja lõpliku nimekirja erinevust avastada ja operaatorile teada anda.
+Seega: 1) kui lõplikus nimekirjas on isik, kes hääletamisperioodil edastatud nimekirjas puudub, siis loetakse isik e-hääletanuks; 2) kui hääletamisaegses nimekirjas on isik, kes lõplikus nimekirjas puudub, siis märge sellise isiku kohta VIS3-s küll säilitatakse, kuid töötluses ja toimingutes lähtutakse lõplikust nimekirjast, s.t loetakse, et isik ei ole e-hääletanud. VIS3 peab omama võimekust hääletamisaegse ja lõpliku nimekirja erinevust avastada ja operaatorile teada anda.
 
 EHS-st VIS3-e edastatud e-hääletamise faktid on VIS3 kasutajaliideses nähtavad valimiste korraldajale, vaates "Valijaga seotud toimingute ajalugu". Kui valija e-hääletas mitu korda, siis on valijaga seotud toimingute ajaloos esitatud kõik valija e-hääletamised. E-hääletamise juures on näha kuupäev ja kellaaeg, millal e-hääletamise fakt EHS-st VIS3-e edastati.
 
