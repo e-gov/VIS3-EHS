@@ -15,7 +15,7 @@ paths:
   /elections:
     get:
       summary: Valimissündmuste loetelu
-      description: Otspunkt väljastab aktiivsete valimissündmuste loetelu. Aktiivne valimissündmus teenuse kontekstis on selline, mille kohta EHS on valmis väljastama jooksvat e-hääletanute nimekirja.
+      description: Otspunkt väljastab aktiivsete valimissündmuste loetelu. Aktiivne valimissündmus teenuse kontekstis on selline, mille kohta EHS on valmis väljastama e-hääletamiste nimekirja.
       responses:
         200:
           description: Edukas operatsioon
