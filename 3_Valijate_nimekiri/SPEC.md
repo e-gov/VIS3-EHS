@@ -158,7 +158,7 @@ Päiseridade sisu on järgmine:
     järjekorranumbriks on 0.
 4. `period` - nimekirjas kajastuvate muudatuste ajavahemik. Esimene väli
    sisaldab perioodi algust, teine lõppu. Algnimekirja puhul on perioodi algus
-   ja lõpu väärtused võrdsed. Väli on informatiivne. 
+   ja lõpu väärtused võrdsed. Väli on informatiivne.
 
 Kirje koosneb väljadest, mille sisu on järgmine:
 
@@ -361,9 +361,9 @@ ja järjekorranumbriga nimekiri eksisteerib, vastab VIS3
 `application/octet-stream` tüüpi baidijadaga, mis esitab kahest failist
 koosnevat ZIP konteinerit:
 
--   [nimekirjafail](#nimekirja-andmevorming) nimega
+-   nimekirjafail nimega
     `<election_identifier>-voters-<changeset>.utf`
--   [signatuurifail](#nimekirja-signeerimine) nimega
+-   signatuurifail nimega
     `election_identifier<>-voters-<changeset>.sig`
 
 Sellise vastuse korral on HTTP status 200.
@@ -384,7 +384,7 @@ endas JSON vormingus viiteid kõigile väljastatud muudatusnimekirjadele.
 
 MÄRKUS. Viidetes tarnitavad URL-id ei ole õiged ja seetõttu mittekasutatavad. EHS peab konkreetse muudatuste nimekirja poole pöördumise URL-i koostama vastavalt VIS3 EHS API OpenAPI vormingus spetsifikatsioonile (asub käesolevas repos, failis `vis3-ehs-api.yaml`). VIS3 edasisestes versioonides eemaldame viidetest URL-id. 20.07.2021.
 
-MÄRKUS. Viidetes tarnitavate URL-de käsitlust muudetud: elemendis `url` tarnitakse mitte täis-URL, vaid ainult _path_ ja -query_ osa. 
+MÄRKUS. Viidetes tarnitavate URL-de käsitlust muudetud: elemendis `url` tarnitakse mitte täis-URL, vaid ainult _path_ ja -query_ osa.
 
 ``` {.sourceCode .html}
 {
