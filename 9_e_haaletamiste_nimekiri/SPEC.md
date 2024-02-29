@@ -10,7 +10,7 @@ kavand v0.4
 - Lisatud jõudluskaalutlused. / Priit Parmakson, 01.11.2022
 - Asendatud "e-hääletanu" -> "e-hääletamine". Põhjus: inimene võib e-hääletada mitu korda (ümberhääletamine); vastavalt korrigeeritud JSON väljanimesid "evotersbatch" -> "evotingsbatch". /  Priit Parmakson, 01.09.2022
 - Eemaldatud: hääletamise kuupäeva/aja edastamine. Põhjus: turvakaalutlus (häälemüügi takistamine). / Priit Parmakson, 01.09.2022 (Sven Heibergiga arutelu alusel)
-- Lisatud: 1) ärivajaduse täpsustus; 2) e-hääletamise fakti aja edastamine; 3) edastuse kontroll ja vajadusel täiendamine või parandamine lõpliku faili abil. / Priit Parmakson, 04.05.2022 
+- Lisatud: 1) ärivajaduse täpsustus; 2) e-hääletamise fakti aja edastamine; 3) edastuse kontroll ja vajadusel täiendamine või parandamine lõpliku faili abil. / Priit Parmakson, 04.05.2022
 - Arutelu - RVT ja RIA inimesed, 04.05.2022
 - "E-hääletanute jooksev nimekiri", kavand v0.2. / Priit Parmakson, 02.05.2022
 - Arutelu: X-tee kasutamine, JSON - Tarmo Hanga, Priit Parmakson, apr 2022
@@ -22,7 +22,7 @@ Käesolev spetsifikatsioon määratleb protokolli e-hääletamiste nimekirja eda
 
 Varasematel valimistel (k.a KOV 2021) on peale hääletamise lõppu, valimispäeval edastatud EHS-st VIS3-le e-hääletanute nimekiri (edaspidi - e-hääletanute lõplik nimekiri). See edastus on spetsifitseeritud: [E-hääletanute nimekiri](https://github.com/e-gov/VIS3-EHS/blob/main/4_e_haaletanute_nimekiri/SPEC.md).
 
-Siiski on vajadus VIS3-s saada teavet, kas valija on e-hääletanud, juba enne ülalnimetatud lõplikku edastust. Valija, kes on e-hääletanud, võib tulla eelhääletamise perioodil valimisjaoskonda ja soovida paberil hääletada. Valimisjaoskonna töötajal oleks hea omada võimalust VIS3-st vaadata, kas valija on e-hääletanud. Seda teavet saab muuhulgas kasutada valija hoiatamiseks, et paberhääletamisega tema e-hääletamine tühistub. 
+Siiski on vajadus VIS3-s saada teavet, kas valija on e-hääletanud, juba enne ülalnimetatud lõplikku edastust. Valija, kes on e-hääletanud, võib tulla eelhääletamise perioodil valimisjaoskonda ja soovida paberil hääletada. Valimisjaoskonna töötajal oleks hea omada võimalust VIS3-st vaadata, kas valija on e-hääletanud. Seda teavet saab muuhulgas kasutada valija hoiatamiseks, et paberhääletamisega tema e-hääletamine tühistub.
 
 E-hääletamiste nimekiri edastatakse EHS-st VIS3-e X-tee teenusega.
 
@@ -100,7 +100,7 @@ Näide.
 
 Päring: `GET /elections/RK_2023/lastseqno`
 
-VIS3 pärib valimissündmuse `RK_2023` viimase e-hääletamise järjenumbrit. 
+VIS3 pärib valimissündmuse `RK_2023` viimase e-hääletamise järjenumbrit.
 
 Vastus:
 
@@ -133,14 +133,14 @@ Vastus:
   "fromseqno": 54001,
   "batchmaxsize": 100,
   "evotingsbatch": [
-    { 
+    {
       "seqno": 54001,
       "idcode": "38101010020",
       "votername": "LEO KASS",
       "kovcode": "0068",
       "electoraldistrictno": 4
     },
-    { 
+    {
       "seqno": 54002,
       "idcode": "38101010021",
       "votername": "MARK KOER",
@@ -162,7 +162,7 @@ Vastuses võib olla kuni `batchmaxsize` kirjet. Kui vastuses on kirjeid vähem k
 
 VIS3 peab suutma töödelda erineva `batchmaxsize` väärtusega vastuseid.
 
-# Töötluse ülevaade
+### Töötluse ülevaade
 
 EHS registreerib e-hääletamise fakte. Igale e-hääletamisele omistab EHS järjenumbri. E-hääletamise fakte võib hoida nt järjenumbri järgi indekseeritud tabelis - siis on VIS3-i päringutele vastamine kiire ja efektiivne - kuid see on EHS siseasi. Paki maksimaalsuurus peaks olema EHS seadistuses määratav.
 
@@ -174,14 +174,14 @@ Päringute "e-hääletamiste pakk" töötlusloogika EHS-i poolel peab võimaldam
 
 Töötlus peab olema idempotentne (samajõuline) - selles mõttes, et VIS3 võib päritud andmeid igal ajal uuesti küsida. Uuesti pärimisega ei tohi tekkida duubelandmeid, tähendusnihkeid ega kinnijooksmisi.
 
-Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relatsioonilises andmebaasis, vaid etcd mäluteenuses. 
+Tehnilise taustateabena märgime, et EHS hoiab e-hääletamise fakte mitte relatsioonilises andmebaasis, vaid etcd mäluteenuses.
 
-# Kohaletoimetamise garantii
+### Kohaletoimetamise garantii
 Sõltuvalt e-hääletamise sagedusest ja EHS jõudlusest ning seadistusest võib EHS-s juhtuda, et e-hääletamise väga suure sageduse perioodil e-hääletamise faktile järjenumbri omistamine ajalõpu (ingl timeout) tõttu ebaõnnestub. Selline e-hääletamise fakt jääb e-hääletamiste nimekirjas VIS3-e edastamata.
 
-Seega e-hääletamiste nimekiri ei anna kõigi e-hääletamiste VIS3-e jooksvalt kohaletoimetamise garantiid. VIS3-e kohaletoimetatud fakte tuleb käsitada informatiivsetena. E-hääletamise faktid toimetatakse VIS3-e kindlalt täielikus koosseisus e-hääletanute (lõplikus) nimekirjas, pärast e-hääletamise perioodi lõppu (eraldi liides EHS ja VIS3 vahel). 
+Seega e-hääletamiste nimekiri ei anna kõigi e-hääletamiste VIS3-e jooksvalt kohaletoimetamise garantiid. VIS3-e kohaletoimetatud fakte tuleb käsitada informatiivsetena. E-hääletamise faktid toimetatakse VIS3-e kindlalt täielikus koosseisus e-hääletanute (lõplikus) nimekirjas, pärast e-hääletamise perioodi lõppu (eraldi liides EHS ja VIS3 vahel).
 
-# Teenuse pakkumise ajaline ulatus
+### Teenuse pakkumise ajaline ulatus
 
 Konkreetse valimissündmuse kohta pakub EHS e-hääletamiste nimekirja ainult piiratud perioodil. See periood hõlmab e-hääletamise perioodi (kehtiva õiguse kohaselt 6 päeva) koos lühikeste siirdeperioodidega enne ja pärast.
 
@@ -189,7 +189,7 @@ Kui EHS valimissündmuse kohta e-hääletamiste nimekirja enam ei paku, siis pä
 
 Valimissündmuste loetelu pakub EHS pidevalt (otspunkt "Valimissündmuste loetelu"). Loetelus on valimissündmused, mille kohta EHS on valmis e-hääletamiste nimekirja pakkuma.
 
-# Kontroll ja veaolukordade käsitlemine
+### Kontroll ja veaolukordade käsitlemine
 
 Eeldatakse, et EHS-i poolt VIS3-le väljastatav on korrektne ja muutumatu (e-hääletamiste nimekirja piires). Parandus- ja muutmiskirjeid käesolev protokoll ei sisalda.
 
@@ -202,10 +202,10 @@ Seega: 1) kui lõplikus nimekirjas on isik, kes hääletamisperioodil edastatud 
 
 EHS-st VIS3-e edastatud e-hääletamise faktid on VIS3 kasutajaliideses nähtavad valimiste korraldajale, vaates "Valijaga seotud toimingute ajalugu". Kui valija e-hääletas mitu korda, siis on valijaga seotud toimingute ajaloos esitatud kõik valija e-hääletamised. E-hääletamise juures on näha kuupäev ja kellaaeg, millal e-hääletamise fakt EHS-st VIS3-e edastati.
 
-# Kirjandus
+## Kirjandus
 
 \[1] Git. https://git-scm.com/.
 
-\[2] CouchDB Replication Protocol, https://guide.couchdb.org/draft/replication.html. 
+\[2] CouchDB Replication Protocol, https://guide.couchdb.org/draft/replication.html.
 
 \[3] Principle and application of Rsync algorithm. https://developpaper.com/principle-and-application-of-rsync-algorithm/.
