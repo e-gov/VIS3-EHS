@@ -16,7 +16,7 @@
                 },
 		"election": {
 		     "type": "string",
-		     "description": Election type and time"
+		     "description": "Election type and time"
 		},
                 "online-voters": {
                     "type": "integer",
