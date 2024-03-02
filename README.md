@@ -46,7 +46,7 @@ Liidesed on täpsemalt kirjeldatud allpool.
 
 [8 E-hääletamisest osavõtu detailstatistika](8_e_haaletamise_detailstatistika/SPEC.md)
 
-[9 E-hääletamiste nimekiri](9_e_haaletamiste_nimekiri)
+[9 E-hääletamiste nimekiri](9_e_haaletamiste_nimekiri/SPEC.md)
 
 Spetsifikatsioonides kasutatav valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](valimissündmuse_identifikaator.md).
 
