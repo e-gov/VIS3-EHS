@@ -25,3 +25,16 @@ Faili näited (JSON):
 - [choices_KOV.json](choices_KOV.json)
 - [choices_EP.json](choices_EP.json)
 - [choices_RK.json](choices_RK.json)
+
+## Taustainfo
+
+Valikute nimekiri sisaldab andmeid kandidaatide (valimistel) või vastusevariantide (rahvahääletusel)
+kohta. Valimiste korral on lisaks kandidaadi andmetele nimekirjas ka tema erakonna või valimisliidu nimi, mille nimekirjas ta kandideerib.
+
+Valijale elektroonilise hääletamise käigus nähtavaid valimiste vahelisi süsteemseid erinevusi on kaks:
+
+1. Rahvahääletusel ei valita erakondadesse kuuluvate kandidaatide vahel vaid vastatakse „JAH“/“EI“ rahvahääletuse küsimusele;
+
+2. Riigikogu, KOV ja Euroopa Parlamendi valimistel antakse hääl ühele kandidaadile, kes võib, aga ei pruugi kuuluda poliitilise ühenduse nimekirja.
+
+Protokollistik kodeerib valija võimalikud valikud ringkonnas kuni 11-kohalise arvväärtusena, mis valikute nimekirjas kodeeritakse koos ringkonna EHAK-koodiga. Valijale tohivad kättesaadavad olla ainult tema ringkonnakohased valikud. Valijarakendus peab seda omadust tagama ning hääletamistulemust arvutav rakendus kontrollima.

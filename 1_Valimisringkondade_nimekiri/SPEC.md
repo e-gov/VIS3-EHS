@@ -35,3 +35,33 @@ Näited (JSON):
 - [districts_RH.json](districts_RH.json)
 - [districts_RK.json](districts_RK.json)
 
+## Taustainfo
+
+Kandidaate on võimalik valimisele üles seada ainult konkreetses valimisringkonnas. Ringkondade järgi antakse valijatele hääletamise valikud:
+
+1. Iga valija kuulub talle määratud valimisringkonda;
+2. Kõigis ühe ringkonna jaoskondades saavad valijad teha valiku vaid selle ringkonna valikute vahel;
+
+Eesti riiklikel valimistel eristatakse kohalike omavalitsuste volikogude (KOV) valimisi, Riigikogu valimisi, Euroopa Parlamendi valimisi ning rahvahääletusi.
+
+KOV valimised korraldatakse vastavalt seadusele „Kohaliku omavalitsuse volikogu valimise seadus“. Valimine toimub kohaliku omavalitsuse tasandil, igal omavalitsusel on oma hääletamistulemus. Valimisringkonnad moodustatakse omavalitsuse tasemel vastavalt seaduses kirjeldatud reeglitele.
+
+Riigikogu valimised korraldatakse vastavalt seadusele „Riigikogu valimise seadus“. Valimine toimub riigi tasandil. Riik jaguneb 12 valimisringkonnaks. Hääletamistulemus tehakse kindlaks iga valimisringkonna kohta.
+
+Europarlamendi valimised korraldatakse vastavalt seadusele „Euroopa Parlamendi valimise seadus“. Valimine toimub riigi tasandil, hääletamistulemus on kõigile kohalikele omavalitsustele ühine. Terve riik on üks valimisringkond.
+
+Rahvahääletused korraldatakse vastavalt seadusele „Rahvahääletuse seadus“. Valimine toimub riigi tasandil, hääletamistulemus on kõigile kohalikele omavalitsustele ühine. Terve riik on üks valimisringkond.
+
+Erinevad valimised ei erine elektroonilise hääletamise andmevormingute ja protseduuride poolest. Erinevad ringkondade jaotused hallatakse VIS3 poolt.
+
+Kandidaate on võimalik valimisele üles seada ainult konkreetses valimisringkonnas. Valijad on jaotatud valimisringkondade vahel. Valija saab teha valiku ainult tema ringkonnas kandideerivate kandidaatide vahel.
+
+Kuna kohaliku omavalitsuse volikogude valimisel toimub valimine Eesti omavalitsuste (vallad, linnad) tasemel, siis kasutatakse elektroonilise hääletamise protokollistikus valimisringkondade kirjeldamisel ning valijate ja valikute ringkonnakuuluvuse näitamisel Eesti haldus- ja asustusjaotuse klassifikaatorit EHAK
+
+Näiteks:
+• Tallinna linna Pirita linnaosa EHAK kood on 0596;
+• Anija valla EHAK kood on 0141.
+
+Riigi tasemel toimuvatel valimistel pannakse ringkonna EHAK koodiks kokkuleppeliselt 0.
+
+Riigikogu ja europarlamendi valimistel ning rahvahääletusel moodustatakse nimekirjas igasse ringkonda fiktiivne üksus alaliselt välisriigis elavate valijate tarbeks. Selle üksuse number on 0 ning vastav EHAK kood on 0000.
