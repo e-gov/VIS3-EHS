@@ -9,7 +9,7 @@ konfidentsiaalset siseehitust ega liideste konfidentsiaalseid elemente.
 
 ## Ülevaade
 
-![VIS3 ja EHS liidesed (ülevaade)](img/VIS-EHS_v02.png)
+![VIS3 ja EHS liidesed (ülevaade)](img/vis-ehs.png)
 
 Joonis 1. VIS3 ja EHS liidesed (ülevaade).
 
