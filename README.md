@@ -1,13 +1,15 @@
 # VIS3-EHS liideste spetsifikatsioonid
 
-Repo esitab Valimiste infosüsteemi (VIS3) ja e-hääletamise süsteemi (EHS) vaheliste liideste spetsifikatsioonid.
+Eesti riiklikel valimistel toimub e-hääletamine Valimiste infosüsteemi (VIS3) ja e-hääletamise süsteemi (EHS) koostöös. EHS roll on elektroonilise hääletamise läbiviimine lähtudes valimise definitsioonist, mis koostatakse valimise korraldaja poolt VIS3 abil. E-hääletamise ajal vahetavad EHS ja VIS3 informatsiooni - võivad muutuda valijate nimekirjad ning liigub info e-häälte laekumise kohta.
+
+Dokument esitab VIS3 ja e-hääletamise süsteemi EHS vaheliste liideste spetsifikatsioonid.
 
 Spetsifikatsioonid on avalikud. Spetsifikatsioonid ei käsitle VIS3 ega EHS
 konfidentsiaalset siseehitust ega liideste konfidentsiaalseid elemente.
 
 ## Ülevaade
 
-![VIS3 ja EHS liidesed (ülevaade)](img/VIS-EHS_v02.png)
+![VIS3 ja EHS liidesed (ülevaade)](img/vis-ehs.png)
 
 Joonis 1. VIS3 ja EHS liidesed (ülevaade).
 
@@ -44,9 +46,10 @@ Liidesed on täpsemalt kirjeldatud allpool.
 
 [8 E-hääletamisest osavõtu detailstatistika](8_e_haaletamise_detailstatistika/SPEC.md)
 
-[9 E-hääletamiste nimekiri](9_e_haaletamiste_nimekiri)
+[9 E-hääletamiste nimekiri](9_e_haaletamiste_nimekiri/SPEC.md)
 
 Spetsifikatsioonides kasutatav valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](valimissündmuse_identifikaator.md).
+
 ## Usalduse loomine masinliidestes
 
 Masinliidesed kaitstakse HTTPS-ga ja TLS mõlemapoolse autentimisega.
