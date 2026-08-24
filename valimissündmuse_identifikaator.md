@@ -31,3 +31,9 @@ Valimissündmuse tüüp esitatakse koodiga:
 - `RK` - Riigikogu valimised
 - `RH` - Rahvahääletus.
 
+
+## Küsimuse identifikaator
+
+EHS võimaldab ühel valimisel küsida mitut küsimust. Igal küsimusel on oma identifikaator.
+
+EHSi jaoks on küsimuse identifikaator kuni 28 ASCII-tähemärgi pikkune sõne.
