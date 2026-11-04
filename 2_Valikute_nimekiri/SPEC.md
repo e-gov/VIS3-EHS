@@ -6,11 +6,11 @@ VIS3 edastab EHS-le andmed registreeritud kandidaatide (valimistel) või vastuse
 
 Andmed edastatakse inim-masin-protseduuriga:
 
-1. VIS peakasutaja laeb JSON faili VIS3-st alla; Kasutaja peab valima aktiivsete valimissündmuste seast soovitud sündmuse, mille kohta infot alla laadida. Valimissündmus on aktiivne, kui tema staatus pole `closed` ega `deleted`.
-2. VIS peakasutaja allkirjastab faili digitaalselt väljaspool VIS-i ja annab selle EHS operaatorile;
-3. EHS operaator laeb digiallkirjastatud faili EHS-i.
+1. VIS peakasutaja koostab VIS3-s valikute nimekirja ja allkirjastab selle VIS3-s digitaalselt (ID-kaardi, Mobiil-ID või Smart-ID-ga). Kasutaja peab valima aktiivsete valimissündmuste seast soovitud sündmuse, mille kohta nimekiri koostada. Valimissündmus on aktiivne, kui tema staatus pole `closed` ega `deleted`. Iga allkirjastamine loob uue digikonteineri;
+2. VIS peakasutaja laeb allkirjastatud digikonteineri VIS3-st alla ja annab selle EHS operaatorile;
+3. EHS operaator laeb digikonteineri EHS-i.
 
-Fail on JSON-formaadis (näidis lisatud tööülesandele). Faili ei allkirjastata.
+Edastatav fail on ASiC-E digikonteiner (`.asice`), mis sisaldab üht JSON-formaadis andmefaili.
 
 ## Edastatav fail
 
@@ -18,12 +18,28 @@ Aluseks on EHS senine liides VIS2-ga, mis on spetsifitseeritud dokumendis "IVXV 
 
 Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
 
-Faili struktuur (JSON-skeem): [choices.schema](choices.schema)
+Andmefaili struktuur (JSON-skeem): [choices.schema](choices.schema)
 
-Faili näited (JSON):
+### Faili nimi
+
+Digikonteineri nimi on kujul `<valimissündmuse identifikaator>_ELECTION_CHOICES_<nr>.asice`, kus `<nr>` on valimissündmuse valikute nimekirja ekspordi järjenumber. Järjenumber algab nullist ja suureneb iga uue allkirjastatud ekspordiga ühe võrra. Suurima järjenumbriga konteiner on kõige värskem.
+
+Konteineris olev andmefail on sama nimega, kuid laiendiga `.json`.
+
+### Näited
+
+Allkirjastatud digikonteinerid (ASiC-E):
+
+- [EP_2026_ELECTION_RESULTS_ELECTION_CHOICES_0.asice](EP_2026_ELECTION_RESULTS_ELECTION_CHOICES_0.asice)
+- [KOV_2026_ELECTION_RESULTS_ELECTION_CHOICES_0.asice](KOV_2026_ELECTION_RESULTS_ELECTION_CHOICES_0.asice)
+- [RH_2026_ELECTION_RESULTS_ELECTION_CHOICES_0.asice](RH_2026_ELECTION_RESULTS_ELECTION_CHOICES_0.asice)
+- [RK_2026_ELECTION_RESULTS_ELECTION_CHOICES_1.asice](RK_2026_ELECTION_RESULTS_ELECTION_CHOICES_1.asice)
+
+Andmefailid (JSON):
 
 - [choices_KOV.json](choices_KOV.json)
 - [choices_EP.json](choices_EP.json)
+- [choices_RH.json](choices_RH.json)
 - [choices_RK.json](choices_RK.json)
 
 ## Taustainfo

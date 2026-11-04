@@ -25,6 +25,7 @@ Vasakul on VIS3, mooduli täpsusega:
 
 Andmed liiguvad noole suunas. HTTPS masinliidestes on teenust pakkuvad otspunktid VIS3 poolel. X-tee liideses on teenusepakkujaks EHS.
 Inim-masinliides tähendab seda, et ühe süsteemi operaator laeb faili süsteemist alla ja edastab teise süsteemi operaatorile, kes laeb faili teise süsteemi üles.
+Liidestes 1, 2 ja 5 allkirjastatakse fail digitaalselt VIS3-s ning edastatakse ASiC-E digikonteinerina (`.asice`).
 
 Liidesed on täpsemalt kirjeldatud allpool.
 
@@ -42,8 +43,6 @@ Liidesed on täpsemalt kirjeldatud allpool.
 
 [6 E-hääletamise tulemus](6_e_haaletamise_tulemus/SPEC.md)
 
-[7 E-hääletamisest osavõtu üldstatistika](7_e_haaletamise_yldstatistika/SPEC.md)
-
 [8 E-hääletamisest osavõtu detailstatistika](8_e_haaletamise_detailstatistika/SPEC.md)
 
 [9 E-hääletamiste nimekiri](9_e_haaletamiste_nimekiri/SPEC.md)
@@ -54,7 +53,7 @@ Spetsifikatsioonides kasutatav valimissündmuse identifikaator peab vastama form
 
 Masinliidesed kaitstakse HTTPS-ga ja TLS mõlemapoolse autentimisega.
 
-Lisaks piiratakse VIS3 seadistusega EHS pääs ainult EHS-le määratud otspunktidele (3b ja 7).
+Lisaks piiratakse VIS3 seadistusega EHS pääs ainult EHS-le määratud otspunktidele (3b ja 8).
 
 ## Veakäsitlus masinliidestes
 
