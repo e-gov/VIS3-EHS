@@ -4,17 +4,19 @@ VIS3 edastab EHS-le tühistus- ja ennistusnimekirja (lühidalt - tühistusnimeki
 
 Tühistusnimekiri sisaldab andmeid isikute kohta, kelle e-hääl tuleb tühistada (on paberhääletanud ja sellest tulenevalt ei lähe e-hääl arvesse valimistulemuste kokkulugemisel) või ennistada (s.t. tühistatakse eelnev tühistamine ning häälte uuesti üle lugemisel võetakse ennistatud e-hääl arvesse).
 
-Fail on JSON-formaadis.
+EHS rakendab tühistusnimekirja e-häälte kokkulugemisel: tühistatud isikute e-hääli arvesse ei võeta, ennistatud isikute e-hääled võetakse uuesti arvesse.
+
+Edastatav fail on ASiC-E digikonteiner (`.asice`), mis sisaldab üht JSON-formaadis andmefaili.
 
 ## Protseduur
 
-Tühistusnimekiri edastakse inim-masin-protseduuriga:
+Tühistusnimekiri edastatakse inim-masin-protseduuriga:
 
-1) EHS operaator laeb JSON-faili EHS-st alla;
+1) VIS peakasutaja koostab VIS3-s tühistusnimekirja ja allkirjastab selle VIS3-s digitaalselt (ID-kaardi, Mobiil-ID või Smart-ID-ga). Iga allkirjastamine loob uue digikonteineri;
 
-2) EHS operaator allkirjastab faili digitaalselt väljaspool EHS-i ja annab selle VIS peakasutajale;
+2) VIS peakasutaja laeb allkirjastatud digikonteineri VIS3-st alla ja annab selle EHS operaatorile;
 
-3)  VIS peakasutaja laeb digikonteinerist välja võetud faili VIS3-i.
+3) EHS operaator laeb digikonteineri EHS-i ja rakendab tühistusnimekirja e-häälte kokkulugemisel.
 
 ## Edastatav fail
 
@@ -22,9 +24,24 @@ Aluseks on EHS senine liides VIS2-ga, mis on spetsifitseeritud dokumendis "IVXV 
 
 Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
 
-Faili struktuur (JSON-skeem): [revoke.schema](revoke.schema)
+Andmefaili struktuur (JSON-skeem): [revoke.schema](revoke.schema)
 
-Faili näited (JSON):
+### Faili nimi
+
+Digikonteineri nimi on kujul `<valimissündmuse identifikaator>_EVOTERS_OUTPUT_<nr>.asice`, kus `<nr>` on valimissündmuse tühistusnimekirja ekspordi järjenumber. Järjenumber algab nullist ja suureneb iga uue allkirjastatud ekspordiga ühe võrra. Suurima järjenumbriga konteiner on kõige värskem.
+
+Konteineris olev andmefail on sama nimega, kuid laiendiga `.json`.
+
+### Näited
+
+Allkirjastatud digikonteinerid (ASiC-E):
+
+- [EP_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice](EP_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice)
+- [KOV_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice](KOV_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice)
+- [RH_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice](RH_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice)
+- [RK_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice](RK_2026_ELECTION_RESULTS_EVOTERS_OUTPUT_0.asice)
+
+Andmefailid (JSON):
 
 - [revoke_EP.json](revoke_EP.json)
 - [revoke_KOV.json](revoke_KOV.json)

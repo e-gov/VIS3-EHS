@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: VIS3 EHS API spetsifikatsioon
-  description: VIS3 pakub e-hääletamise süsteemile (EHS) API-d, millega EHS saab VIS3-st laadida valijate nimekirja muudatusi ja VIS3-e saata e-hääletanute koguarvu teatist. Spetsifikatsioon on avalik (avaldatakse GitHub-is, repos https://github.com/e-gov/VIS3-EHS.
+  description: VIS3 pakub e-hääletamise süsteemile (EHS) API-d, millega EHS saab VIS3-st laadida valijate nimekirja muudatusi ja VIS3-e saata e-hääletamise detailstatistikat. Spetsifikatsioon on avalik (avaldatakse GitHub-is, repos https://github.com/e-gov/VIS3-EHS.
   termsOfService: http://swagger.io/terms/
   license:
     name: MIT
@@ -15,26 +15,6 @@ servers:
     description: DEV
 
 paths:
-
-  /online-voters:
-    post:
-      summary: e-hääletanute koguarvu teatise edastamine
-      requestBody:
-        description: e-hääletanute koguarvu teatise päringu keha
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/OnlineVotersTotal"
-      responses:
-        204:
-          $ref: "#/components/responses/204"
-        400:
-          $ref: "#/components/responses/400"
-        403:
-          $ref: "#/components/responses/403"
-        500:
-          $ref: "#/components/responses/500"
 
   /ehs-election-voters-changeset:
     get:
@@ -95,35 +75,65 @@ paths:
         500:
           $ref: "#/components/responses/500"
 
+  /election/voters-by-county:
+    post:
+      description: E-hääletamise detailstatistika edastamine
+      operationId: saveVotersByCounty
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                election:
+                  type: string
+                  description: Valimissündmuse kood
+                  example: EP_2024
+                time:
+                  type: string
+                  format: date-time
+                  example: "2024-03-03T16:24:00Z"
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      county:
+                        type: string
+                        description: KOV EHAK kood, konstant TOTAL või konstant FOREIGN (välishäälte real)
+                        example: "0371"
+                      online-voters:
+                        type: array
+                        description: Päeva kaupa kumuleeruvad hääletamiste arvud kohalikus omavalitsuses.
+                        items:
+                          type: object
+                          properties:
+                            day-order:
+                              type: string
+                              description: Päeva number enne valimispäeva (6-1), valimispäeval määramata.
+                              example: 6
+                            time:
+                              type: string
+                              format: time
+                              description: Valimispäeval statistika vahejaotuse aeg (12:00, 16:00, 20:00), eelhääletamise päevadel määramata.
+                              example: "12:00"
+                            voted-count:
+                              type: integer
+                              description: Statistika jaotuse hetkeks kogunenud häälte arv kohalikus omavalitsuses.
+                              example: 10501
+      responses:
+        204:
+          $ref: "#/components/responses/204"
+        400:
+          $ref: "#/components/responses/400"
+        403:
+          $ref: "#/components/responses/403"
+        500:
+          $ref: "#/components/responses/500"
+
 components:
   schemas:
-
-    OnlineVotersTotal:
-      type: object
-      description: e-hääletanute koguarvu teatis
-      required:
-        - TOTAL
-      properties:
-        TOTAL:
-          type: object
-          required:
-            - time
-            - election
-            - online-voters
-          properties:
-            time:
-              description: Ajahetk e-hääletanute koguarvu "online-voters" väärtuse jaoks
-              type: string
-              format: date-time
-              example: "2020-10-16T09:32:21Z"
-            election:
-              description: Valimissündmuse tunnus
-              type: string
-              example: KOV_2021
-            online-voters:
-              description: e-hääletanute koguarv ajahetkel "time". Peab olema naturaalarv (0, 1, 2, ...)!
-              type: integer
-              format: int32
 
     VotersChangesets:
       type: object
