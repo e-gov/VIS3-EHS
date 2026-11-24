@@ -362,9 +362,9 @@ ja järjekorranumbriga nimekiri eksisteerib, vastab VIS3
 koosnevat ZIP konteinerit:
 
 -   nimekirjafail nimega
-    `<election_identifier>-voters-<changeset>.utf`
+    `<election_identifier>_VOTERS_<changeset>.utf`
 -   signatuurifail nimega
-    `election_identifier<>-voters-<changeset>.sig`
+    `<election_identifier>_VOTERS_<changeset>.sig`
 
 Sellise vastuse korral on HTTP status 200.
 

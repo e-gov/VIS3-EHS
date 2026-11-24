@@ -19,6 +19,7 @@ Näited:
 - `RK_2023`
 - `RK_2023_E` (2023. a Riigikogu erakorralised valimised)
 - `RK_2023_E_2` (2023. a Riigikogu teised erakorralised valimised).
+- Arendus- ja testkeskkondades võib tunnuse lõpus olla sarnaste testsündmuse eristamiseks lisainfot, näiteks "EP_2026_ELECTION_RESULTS" sisaldab sündmuse etappi testimisel.
 
 EHSi jaoks on valimise identifikaator kuni 28 ASCII-tähemärgi pikkune sõne ning eelnevalt kirjeldatud struktuuri põhjal EHS otsuseid ei tee.
 

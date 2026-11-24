@@ -6,15 +6,15 @@ VIS3 edastab EHS-le teabe valimisringkondade kohta.
 
 Andmed edastatakse inim-masin-protseduuriga:
 
-1) VIS peakasutaja laeb JSON faili VIS3-st alla;
+1) VIS peakasutaja koostab VIS3-s valimisringkondade nimekirja ja allkirjastab selle VIS3-s digitaalselt (ID-kaardi, Mobiil-ID või Smart-ID-ga). Iga allkirjastamine loob uue digikonteineri;
 
-2) VIS peakasutaja allkirjastab faili digitaalselt väljaspool VIS-i ja annab selle EHS operaatorile;
+2) VIS peakasutaja laeb allkirjastatud digikonteineri VIS3-st alla ja annab selle EHS operaatorile;
 
-3) EHS operaator laeb digiallkirjastatud faili EHS-i.
+3) EHS operaator laeb digikonteineri EHS-i.
 
-Fail on JSON-formaadis. Faili ei allkirjastata.
+Edastatav fail on ASiC-E digikonteiner (`.asice`), mis sisaldab üht JSON-formaadis andmefaili.
 
-Faili struktuur on kirjeldatud JSON schema-ga. Kirjeldus on kooskõlastatud EHS omanikuga.
+Andmefaili struktuur on kirjeldatud JSON schema-ga. Kirjeldus on kooskõlastatud EHS omanikuga.
 
 EHS senine liides VIS2-ga on spetsifitseeritud dokumendis "IVXV protokollide kirjeldus" (v 1.5.0, IVXV-PR-1.5.0, 20.04.2019), [https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf](https://www.valimised.ee/sites/default/files/uploads/eh/IVXV-protokollid.pdf), jaotises 3.2 "Valimisjaoskondade ja -ringkondade nimekiri".
 
@@ -26,9 +26,24 @@ Valimistel, kus saavad osaleda alaliselt välisriigis elavad valijad kantakse na
 
 Valimissündmuse identifikaator peab vastama formaadile [Valimissündmuse identifikaator](../valimissündmuse_identifikaator.md).
 
-Faili struktuur (JSON-skeem): [districts.schema](districts.schema)
+Andmefaili struktuur (JSON-skeem): [districts.schema](districts.schema)
 
-Näited (JSON):
+### Faili nimi
+
+Digikonteineri nimi on kujul `<valimissündmuse identifikaator>_ELECTORAL_DISTRICTS_<nr>.asice`, kus `<nr>` on valimissündmuse valimisringkondade nimekirja ekspordi järjenumber. Järjenumber algab nullist ja suureneb iga uue allkirjastatud ekspordiga ühe võrra. Suurima järjenumbriga konteiner on kõige värskem.
+
+Konteineris olev andmefail on sama nimega, kuid laiendiga `.json`.
+
+### Näited
+
+Allkirjastatud digikonteinerid (ASiC-E):
+
+- [EP_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_1.asice](EP_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_1.asice)
+- [KOV_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_0.asice](KOV_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_0.asice)
+- [RH_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_0.asice](RH_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_0.asice)
+- [RK_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_1.asice](RK_2026_ELECTION_RESULTS_ELECTORAL_DISTRICTS_1.asice)
+
+Andmefailid (JSON):
 
 - [district_KOV.json](district_KOV.json)
 - [districts_EP.json](districts_EP.json)
